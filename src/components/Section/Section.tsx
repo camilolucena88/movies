@@ -77,14 +77,20 @@ class Section extends React.Component<Props, State> {
             )
         })
 
-        const cards = filteredPayload.map((item: Payload) => {
-            return <Card
-                url={item.url}
-                title={item.title}
-                message={item.message}
-                img={item.img}
-            />
-        })
+        const cards = () => {
+            if (filteredPayload.length > 0) {
+                return filteredPayload.map((item: Payload) => {
+                    return <Card
+                        url={item.url}
+                        title={item.title}
+                        message={item.message}
+                        img={item.img}
+                    />
+                })
+            } else {
+                return <p>No movies to show</p>
+            }
+        }
 
         return <div>
             <main>
@@ -94,7 +100,7 @@ class Section extends React.Component<Props, State> {
                               categories={this.props.categories}
                               onClick={(event: React.MouseEvent) => this.addFilter(event)}/>
                 <Container>
-                    {cards}
+                    {cards()}
                 </Container>
             </main>
         </div>

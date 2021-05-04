@@ -11,7 +11,7 @@ const SearchBar = ({value, onChange}: Props) => {
         <input value={value} onChange={onChange.bind(this)}
                type="text"
                className="search-bar shadow-sm"
-               placeholder="Buscar..."/>
+               placeholder="Search..."/>
     </div>)
 }
 
