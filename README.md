@@ -12,7 +12,7 @@ Wishlist to add favourite movies (Missing remove from Wishlist and store the wis
 
 Single view per item with details, rating and option to add to the wishlist
 
-###Getting Stating
+### Getting Stating
 
 ``` npm install ```
 
@@ -20,13 +20,13 @@ Single view per item with details, rating and option to add to the wishlist
 
 ``` json-server --watch src/movie.mock-data.json --port 4000 ```
 
-###Testing
+### Testing
 
 There are around 4 test, pending unit test for other modules are pending.
 
 ``` npm run test ```
 
-###Tech and extras
+### Tech and extras
 
 -Bootstrap
 
