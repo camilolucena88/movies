@@ -4,7 +4,7 @@ import {Movie, Payload, Store} from "../../store/types";
 import Section from "../../components/Section/Section";
 import {useSelector} from "react-redux";
 
-const Movies = () => {
+const Wishlist = () => {
 
     const wishlist = useSelector((state: Store) => state.movies)
 
@@ -38,4 +38,4 @@ const Movies = () => {
     </div>
 }
 
-export default Movies;
+export default Wishlist;
