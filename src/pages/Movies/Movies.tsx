@@ -4,7 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import Details from "../../components/Details/Details";
 import useFetch from "../../store/useFetch";
 import {Spinner} from "react-bootstrap";
-import {Movie as Payload} from "../../store/types";
+import {Element as Payload} from "../../store/types";
 
 const Movies = () => {
 

@@ -79,12 +79,9 @@ class Section extends React.Component<Props, State> {
 
         const cards = () => {
             if (filteredPayload.length > 0) {
-                return filteredPayload.map((item: Payload) => {
+                return filteredPayload.map((payload: Payload) => {
                     return <Card
-                        url={item.url}
-                        title={item.title}
-                        message={item.message}
-                        img={item.img}
+                        payload={payload}
                     />
                 })
             } else {

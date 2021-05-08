@@ -1,5 +1,4 @@
 import React from "react"
-import ErrorBoundary from "../ErrorBoundary";
 
 type Props = {
     type: string

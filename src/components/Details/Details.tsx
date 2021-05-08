@@ -1,10 +1,9 @@
 import React from 'react';
 import ReverseBtn from "../Buttons/ReverseBtn";
 import RatingStar from "../Rating/RatingStar";
-import {Movie as Payload} from "./../../store/types"
-import { useSelector, useDispatch } from "react-redux";
-import { Store } from './../../store/types'
-import {addMovie} from "../../store/actions";
+import {Element as Payload} from "./../../store/types"
+import { useDispatch } from "react-redux";
+import {addElement} from "../../store/actions";
 
 type Props = {
     payload: Payload
@@ -58,7 +57,7 @@ const Details = ({payload}: Props) => {
                     </div>
                     <div className="flex">
                         <span className="title-font font-medium text-2xl text-gray-900">{payload.length}</span>
-                        <button data-key={payload.key} onClick={(event) => dispatch(addMovie(payload))}
+                        <button data-key={payload.key} onClick={(event) => dispatch(addElement(payload))}
                             className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                  className="w-5 h-5" viewBox="0 0 24 24">

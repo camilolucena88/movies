@@ -1,15 +1,15 @@
 import React from 'react';
 import Layout from "../../components/Layout/Layout";
-import {Movie, Payload, Store} from "../../store/types";
+import {Element, Payload, Store} from "../../store/types";
 import Section from "../../components/Section/Section";
 import {useSelector} from "react-redux";
 
 const Wishlist = () => {
 
-    const wishlist = useSelector((state: Store) => state.movies)
+    const wishlist = useSelector((state: Store) => state.elements)
 
 
-    const getCategories = (movies: Movie[]) => {
+    const getCategories = (movies: Element[]) => {
         let newCategories = Array.prototype.concat.apply([], movies.map((movie) => movie.genres))
         return newCategories.filter((item, pos) => newCategories.indexOf(item) === pos)
     }
@@ -28,7 +28,7 @@ const Wishlist = () => {
                 length: movie.length,
             }
         })
-        return < Section payload={movies} categories={getCategories(wishlist)}/>
+        return <Section payload={movies} categories={getCategories(wishlist)}/>
         }
     
     return <div>

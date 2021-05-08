@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
-import useFetch from "../../store/useFetch";
 
 type Props = {
     children: React.ReactNode;

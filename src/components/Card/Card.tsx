@@ -1,23 +1,23 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import CardInteraction from "./CardInteraction";
+import {Payload} from "../../store/types";
 
 type Props = {
-    url: string
-    title: string,
-    message: string;
-    img: string
+    payload: Payload
 }
 
-export default function Card({url, title, message, img}: Props) {
+export default function Card({payload}: Props) {
     return (<div className="p-4 lg:w-1/4 md:w-1/2">
         <div className="h-full flex flex-col items-center text-center">
-            <Link to={url}><img alt="team"
-                               className="flex-shrink-0 rounded-lg w-full object-cover object-center mb-4"
-                               src={img}></img></Link>
+            <Link to={payload.url}><img alt="team"
+                               className="flex-shrink-0 rounded-lg w-full object-cover object-center mb-2"
+                               src={payload.img}></img></Link>
             <div className="w-full">
+                { (payload.liked !== undefined) && payload.likes && payload.comments && (payload.bookmark !== undefined) ? <CardInteraction liked={payload.liked} likes={payload.likes} comments={payload.comments} bookmark={payload.bookmark}/> : ''}
                 <h2 className="title-font font-medium text-lg text-gray-900">Alper Kamu</h2>
-                <h3 className="text-gray-500 mb-3"><Link to={url}>{title}</Link></h3>
-                <p className="mb-4">{message}</p>
+                <h3 className="text-gray-500 mb-3"><Link to={payload.url}>{payload.title}</Link></h3>
+                <p className="mb-4">{payload.message}</p>
                 <span className="inline-flex">
                                 <a className="text-gray-500">
                                 <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

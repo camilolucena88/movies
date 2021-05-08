@@ -1,5 +1,7 @@
 import {useEffect, useReducer, useRef} from 'react'
 import axios, {AxiosRequestConfig} from 'axios'
+import {useDispatch} from "react-redux";
+import {addElement} from "./actions";
 
 // State & hook output
 interface State<T> {
@@ -24,6 +26,7 @@ function useFetch<T = unknown>(
 ): State<T> {
     const cache = useRef<Cache<T>>({})
     const cancelRequest = useRef<boolean>(false)
+    const dispatch = useDispatch()
 
     const initialState: State<T> = {
         status: 'init',
@@ -45,7 +48,7 @@ function useFetch<T = unknown>(
         }
     }
 
-    const [state, dispatch] = useReducer(fetchReducer, initialState)
+    const [state, setState] = useReducer(fetchReducer, initialState)
 
     useEffect(() => {
         if (!url) {
@@ -53,22 +56,22 @@ function useFetch<T = unknown>(
         }
 
         const fetchData = async () => {
-            dispatch({type: 'request'})
+            setState({type: 'request'})
 
             if (cache.current[url]) {
-                dispatch({type: 'success', payload: cache.current[url]})
+                setState({type: 'success', payload: cache.current[url]})
             } else {
                 try {
                     const response = await axios(url, options)
                     cache.current[url] = response.data
 
                     if (cancelRequest.current) return
-
-                    dispatch({type: 'success', payload: response.data})
+                    dispatch(addElement(response.data))
+                    setState({type: 'success', payload: response.data})
                 } catch (error) {
                     if (cancelRequest.current) return
 
-                    dispatch({type: 'failure', payload: error.message})
+                    setState({type: 'failure', payload: error.message})
                 }
             }
         }

@@ -1,4 +1,4 @@
-export interface Movie {
+export interface Element {
     id: number;
     key: string;
     name: string;
@@ -7,11 +7,20 @@ export interface Movie {
     rate: string;
     length: string;
     img: string;
+    likes?: number;
+    comments?: CommentType[];
+    liked?: boolean;
+    bookmark?: boolean;
 }
 
 export interface Store {
-    movies: Movie[];
-    newMovie: Movie | null;
+    elements: Element[];
+    newElement: Element | null;
+}
+
+export interface CommentType {
+    id: number,
+    comment: string
 }
 
 export interface Payload {
@@ -24,4 +33,8 @@ export interface Payload {
     slug?: string;
     rating?: string;
     length?: string;
+    likes?: number;
+    comments?: CommentType[];
+    liked?: boolean;
+    bookmark?: boolean;
 }

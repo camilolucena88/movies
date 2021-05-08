@@ -3,13 +3,13 @@ import Section from "../../components/Section/Section";
 import Layout from '../../components/Layout/Layout';
 import useFetch from "../../store/useFetch";
 import { Spinner } from 'react-bootstrap';
-import {Movie, Payload} from "../../store/types";
+import {Element, Payload} from "../../store/types";
 
 const Home = () => {
     
     const url = `http://localhost:4000/movies`
     
-    const {status, data, error} = useFetch<Movie[]>(url)
+    const {status, data, error} = useFetch<Element[]>(url)
     
     const getCategories = (movies: Payload[]) => {
         let newCategories = Array.prototype.concat.apply([], movies.map((movie) => movie.type))
@@ -29,9 +29,13 @@ const Home = () => {
                     slug: movie.key,
                     rating: movie.rate,
                     length: movie.length,
+                    likes: movie.likes,
+                    comments: movie.comments,
+                    liked: movie.liked,
+                    bookmark: movie.bookmark
                 }
             })
-            return < Section payload={movies} categories={getCategories(movies)}/>
+            return <Section payload={movies} categories={getCategories(movies)}/>
         } else if (error) {
             return <div>Error when loading data, refresh the page</div>
         } else if (status) {

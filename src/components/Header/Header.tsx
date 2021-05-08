@@ -15,7 +15,7 @@ const defaultBrandName = {
 }
 
 export default function Header({logo, brandName}: Props & typeof defaultBrandName) {
-    const movies = useSelector((state: Store) => state.movies)
+    const movies = useSelector((state: Store) => state.elements)
 
     return <div>
         <header className="text-gray-600 body-font shadow-sm mb-10">

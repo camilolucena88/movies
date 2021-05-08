@@ -1,18 +1,18 @@
 import {createStore} from 'redux'
-import {Movie, Store} from "./types";
-import {ActionTypes, ADD_MOVIE, REMOVE_MOVIE} from "./actions";
+import {Element, Store} from "./types";
+import {ActionTypes, ADD_ELEMENT, REMOVE_ELEMENT} from "./actions";
 
-function wishlistReducer(state: Store = {movies: [], newMovie: null}, action: ActionTypes) {
+function payloadReducer(state: Store = {elements: [], newElement: null}, action: ActionTypes) {
     switch (action.type) {
-        case ADD_MOVIE:
+        case ADD_ELEMENT:
             return {
                 ...state,
-                movies: addMovie(state.movies, action.payload)
+                elements: addElement(state.elements, action.payload)
             }
-        case REMOVE_MOVIE:
+        case REMOVE_ELEMENT:
             return {
                 ...state,
-                movies: removeMovie(state.movies, action.payload)
+                elements: removeElement(state.elements, action.payload)
             }
         default:
             return state
@@ -21,7 +21,7 @@ function wishlistReducer(state: Store = {movies: [], newMovie: null}, action: Ac
 
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
-const store = createStore(wishlistReducer)
+const store = createStore(payloadReducer)
 
 
 // You can use subscribe() to update the UI in response to state changes.
@@ -30,13 +30,13 @@ const store = createStore(wishlistReducer)
 
 store.subscribe(() => console.log(store.getState()))
 
-const removeMovie = (movies: Movie[], id: number): Movie[] =>
-    movies.filter((movie: Movie) => movie.id !== id)
+const removeElement = (elements: Element[], id: number): Element[] =>
+    elements.filter((element: Element) => element.id !== id)
 
-const addMovie = (movies: Movie[], movie: Movie): Movie[] => {
-    if (movies.some((oldMovie) => oldMovie.id === movie.id))
-        return movies
-    return [ ...movies, movie ];
+const addElement = (elements: Element[], element: Element): Element[] => {
+    if (elements.some((oldElement) => oldElement.id === element.id))
+        return elements
+    return [ ...elements, element ];
 }
 
 export default store;
