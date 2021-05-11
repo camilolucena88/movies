@@ -2,23 +2,47 @@ import React from 'react';
 import Section from "../../components/Section/Section";
 import Layout from '../../components/Layout/Layout';
 import useFetch from "../../store/useFetch";
-import { Spinner } from 'react-bootstrap';
-import {Element, Payload} from "../../store/types";
+import {Spinner} from 'react-bootstrap';
+import {Element, Payload, Store} from "../../store/types";
+import {useDispatch, useSelector} from "react-redux";
+import {addToLikedElements, addToWishlist, updateElement} from "../../store/actions/elements";
 
 const Home = () => {
-    
+    const dispatch = useDispatch()
+
     const url = `http://localhost:4000/movies`
-    
+
     const {status, data, error} = useFetch<Element[]>(url)
-    
+
+    const storeMovies = useSelector((state: Store) => state.movies.elements)
+
+    const onLiked = (event: { currentTarget: any; }): void => {
+        if (data) {
+            console.log(event.currentTarget.value)
+            dispatch(addToLikedElements(data[event.currentTarget.value]))
+            dispatch(updateElement(event.currentTarget.value, 'liked'))
+        }
+    }
+
+    const onComment = () => {
+        alert('COMMENTED')
+    }
+
+    const onBookmark = (event: { currentTarget: any; }): void => {
+        if (data) {
+            dispatch(addToWishlist(data[event.currentTarget.value-1]))
+            dispatch(updateElement(event.currentTarget.value, 'bookmark'))
+        }
+    }
+
     const getCategories = (movies: Payload[]) => {
         let newCategories = Array.prototype.concat.apply([], movies.map((movie) => movie.type))
         return newCategories.filter((item, pos) => newCategories.indexOf(item) === pos)
     }
-    
+
     const getMovies = () => {
         if (data) {
-            const movies = data.map((movie): Payload => {
+            const movies = storeMovies.map((movie): Payload => {
                 return {
                     id: movie.id,
                     url: '/movies/' + movie.id,
@@ -35,15 +59,16 @@ const Home = () => {
                     bookmark: movie.bookmark
                 }
             })
-            return <Section payload={movies} categories={getCategories(movies)}/>
+            return <Section onLiked={onLiked} onComment={onComment} onBookmark={onBookmark} payload={movies}
+                            categories={getCategories(movies)}/>
         } else if (error) {
             return <div>Error when loading data, refresh the page</div>
         } else if (status) {
             return <Spinner animation="border"/>
         }
-        
+
     }
-    
+
     return <div>
         <Layout>
             {getMovies()}

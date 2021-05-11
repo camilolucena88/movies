@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 
 const Wishlist = () => {
 
-    const wishlist = useSelector((state: Store) => state.elements)
+    const wishlist = useSelector((state: Store) => state.wishlist.elements)
 
 
     const getCategories = (movies: Element[]) => {
@@ -28,8 +28,8 @@ const Wishlist = () => {
                 length: movie.length,
             }
         })
-        return <Section payload={movies} categories={getCategories(wishlist)}/>
-        }
+        return <Section onBookmark={() => console.log()} onLiked={() => console.log()} onComment={() => console.log()} payload={movies} categories={getCategories(wishlist)}/>
+    }
     
     return <div>
         <Layout>

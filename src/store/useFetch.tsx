@@ -1,7 +1,8 @@
 import {useEffect, useReducer, useRef} from 'react'
 import axios, {AxiosRequestConfig} from 'axios'
 import {useDispatch} from "react-redux";
-import {addElement} from "./actions";
+import {addElement, addToLikedElements, addToWishlist} from "./actions/elements";
+import {Element} from "./types";
 
 // State & hook output
 interface State<T> {
@@ -26,13 +27,14 @@ function useFetch<T = unknown>(
 ): State<T> {
     const cache = useRef<Cache<T>>({})
     const cancelRequest = useRef<boolean>(false)
-    const dispatch = useDispatch()
 
     const initialState: State<T> = {
         status: 'init',
         error: undefined,
         data: undefined,
     }
+    
+    const dispatch = useDispatch()
 
     // Keep state logic separated
     const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
@@ -66,7 +68,15 @@ function useFetch<T = unknown>(
                     cache.current[url] = response.data
 
                     if (cancelRequest.current) return
-                    dispatch(addElement(response.data))
+                    response.data.forEach((element:Element) => {
+                        dispatch(addElement(element))
+                        if(element.liked) {
+                            dispatch(addToLikedElements(element))
+                        }
+                        if(element.bookmark) {
+                            dispatch(addToWishlist(element))
+                        }
+                    })
                     setState({type: 'success', payload: response.data})
                 } catch (error) {
                     if (cancelRequest.current) return

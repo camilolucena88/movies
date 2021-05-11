@@ -7,20 +7,38 @@ export interface Element {
     rate: string;
     length: string;
     img: string;
-    likes?: number;
+    likes: number;
     comments?: CommentType[];
     liked?: boolean;
     bookmark?: boolean;
 }
 
 export interface Store {
+    movies: MovieStore;
+    wishlist: WishlistStore;
+}
+
+export interface MovieStore {
     elements: Element[];
-    newElement: Element | null;
+}
+
+export interface WishlistStore {
+    elements: Element[];
+}
+
+export interface LikesStore {
+    elements: Element[];
+}
+
+export interface Auth {
+    status: boolean
 }
 
 export interface CommentType {
     id: number,
-    comment: string
+    comment: string,
+    likes: string,
+    replies: number[]
 }
 
 export interface Payload {

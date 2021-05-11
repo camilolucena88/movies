@@ -13,11 +13,13 @@
     "length": "1hr 48mins",
     "img": "deadpool.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }],
     "bookmark": false
   },
@@ -34,12 +36,14 @@
     "rate": "7.0",
     "length": "1hr 50mins",
     "img": "we-are-the-millers.jpg",
-    "likes": 4,
-    "liked": true,
+    "likes": 3,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies":[]
       }
     ],
     "bookmark": false
@@ -58,11 +62,25 @@
     "length": "2hr 27mins",
     "img": "straight-outta-compton.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
+      },
+      {
+        "id": 2,
+        "comment": "second comment",
+        "likes": 5,
+        "replies": []
+      },
+      {
+        "id": 3,
+        "comment": "third comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -81,11 +99,13 @@
     "length": "2hr 5mins",
     "img": "gridiron-gang.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -104,11 +124,13 @@
     "length": "2hr 37mins",
     "img": "american-gangster.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -127,11 +149,13 @@
     "length": "1hr 53mins",
     "img": "gangster-squad.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -150,11 +174,13 @@
     "length": "1hr 55mins",
     "img": "now-you-see-me.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -173,11 +199,13 @@
     "length": "2hr 4mins",
     "img": "jurassic-world.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -196,11 +224,13 @@
     "length": "2hr 11mins",
     "img": "mission-impossible-rogue-nation.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -219,11 +249,13 @@
     "length": "1hr 56mins",
     "img": "the-man-from-uncle.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -242,11 +274,13 @@
     "length": "2hr 28mins",
     "img": "spectre.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -265,11 +299,13 @@
     "length": "2hr 28mins",
     "img": "legend.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -288,11 +324,13 @@
     "length": "2hr 4mins",
     "img": "southpaw.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -311,11 +349,13 @@
     "length": "2hr 22mins",
     "img": "bridge-of-spies.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -334,11 +374,13 @@
     "length": "1hr 57mins",
     "img": "ant-man.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -355,7 +397,18 @@
     ],
     "rate": "7.3",
     "length": "2hr 17mins",
-    "img": "fast-and-furious-7.jpg"
+    "img": "tracers.jpg",
+    "likes": 4,
+    "liked": false,
+    "comments": [
+      {
+        "id": 1,
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
+      }
+    ],
+    "bookmark": false
   },
   {
     "id": 16,
@@ -371,11 +424,13 @@
     "length": "1hr 34mins",
     "img": "tracers.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -394,11 +449,13 @@
     "length": "2hr 2mins",
     "img": "running-scared.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -415,11 +472,13 @@
     "length": "1hr 40mins",
     "img": "the-hangover.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -437,11 +496,13 @@
     "length": "1hr 28mins",
     "img": "project-x.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -460,11 +521,13 @@
     "length": "2hr 32mins",
     "img": "the-dark-knight.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -482,11 +545,13 @@
     "length": "1hr 35mins",
     "img": "the-tounament.jpg",
     "likes": 4,
-    "liked": true,
+    "liked": false,
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -508,7 +573,9 @@
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false
@@ -531,7 +598,9 @@
     "comments": [
       {
         "id": 1,
-        "comment": "first comment"
+        "comment": "first comment",
+        "likes": 5,
+        "replies": []
       }
     ],
     "bookmark": false

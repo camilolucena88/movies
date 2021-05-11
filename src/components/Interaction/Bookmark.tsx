@@ -1,13 +1,15 @@
 import React from "react";
 
 type Props = {
-    bookmark: boolean
+    bookmark: boolean,
+    onBookmark: (event: React.MouseEvent) => any;
+    id: number
 }
 
 
-export default function Bookmark({bookmark}:Props) {
+export default function Bookmark({bookmark, id, onBookmark}:Props) {
     return <div className="flex flex-column">
-        <button className="text-gray-500">
+        <button value={id} className="text-gray-500" onClick={(event) => onBookmark(event)}>
             <small>{bookmark ?
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                      stroke="currentColor">
