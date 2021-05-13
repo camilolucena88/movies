@@ -3,16 +3,19 @@ import CommentList from "../CommentList/CommentList";
 import {CommentType} from "../../store/types";
 
 type Props = {
+    id: number,
     comments?: CommentType[],
-    onComment: (event: React.FormEvent) => void;
+    onComment: (comment: string, id: number) => void;
+    onCommentLike: (elementId: number, commentId: number) => void;
+    elementId: number
 }
 
 
-export default function CommentDetails({comments, onComment}: Props) {
+export default function CommentDetails({id, comments, onComment, onCommentLike, elementId}: Props) {
     return <div>
         <div>Comments</div><hr/>
         <div className="container">
-            <CommentList comments={comments} onComment={() => onComment}/>
+            <CommentList elementId={elementId} onCommentLike={onCommentLike} id={id} comments={comments} onComment={onComment} allCommentsView={true}/>
         </div>
     </div>
 }

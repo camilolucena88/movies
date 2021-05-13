@@ -8,7 +8,7 @@ export interface Element {
     length: string;
     img: string;
     likes: number;
-    comments?: CommentType[];
+    comments: CommentType[];
     liked?: boolean;
     bookmark?: boolean;
 }
@@ -30,6 +30,10 @@ export interface LikesStore {
     elements: Element[];
 }
 
+export interface CommentStore {
+    elements: Element[];
+}
+
 export interface Auth {
     status: boolean
 }
@@ -37,7 +41,9 @@ export interface Auth {
 export interface CommentType {
     id: number,
     comment: string,
-    likes: string,
+    likes: number,
+    liked: boolean,
+    timestamp: string
     replies: number[]
 }
 

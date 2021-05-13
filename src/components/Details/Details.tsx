@@ -8,10 +8,11 @@ import CommentDetails from "./CommentDetails";
 
 type Props = {
     payload: Payload,
-    onComment: (event: React.FormEvent) => void;
+    onComment: (comment: string, id: number) => void;
+    onCommentLike: (elementId: number, commentId: number) => void;
 }
 
-const Details = ({payload, onComment}: Props) => {
+const Details = ({payload, onComment, onCommentLike}: Props) => {
     
     const dispatch = useDispatch()
     
@@ -78,7 +79,7 @@ const Details = ({payload, onComment}: Props) => {
                 </div>
             </div>
         </div>
-        <CommentDetails comments={payload.comments} onComment={() => onComment}/>
+        <CommentDetails elementId={payload.id} onCommentLike={onCommentLike} id={payload.id} comments={payload.comments} onComment={onComment}/>
     </section>
 }
 

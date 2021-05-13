@@ -3,7 +3,7 @@ import {CommentType} from "../../store/types";
 
 type Props = {
     comments: CommentType[]
-    onComment: (event: React.MouseEvent) => any;
+    onComment: (comment: string, id: number) => void;
     id: number
 }
 

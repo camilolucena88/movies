@@ -25,8 +25,9 @@ type Props = {
     payload: Payload[]
     categories: string[]
     onLiked: (event: React.MouseEvent) => void;
-    onComment: (event: React.FormEvent) => void;
+    onComment: (comment: string, id: number) => void;
     onBookmark: (event: React.MouseEvent) => void;
+    onCommentLike: (elementId: number, commentId: number) => void;
 }
 
 class Section extends React.Component<Props, State> {
@@ -84,10 +85,12 @@ class Section extends React.Component<Props, State> {
             if (filteredPayload.length > 0) {
                 return filteredPayload.map((payload: Payload) => {
                     return <Card
+                        id={payload.id}
                         payload={payload}
                         onLiked={this.props.onLiked}
                         onComment={this.props.onComment}
                         onBookmark={this.props.onBookmark}
+                        onCommentLike={this.props.onCommentLike}
                     />
                 })
             } else {

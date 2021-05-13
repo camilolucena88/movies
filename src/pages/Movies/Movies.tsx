@@ -1,27 +1,41 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {Redirect, useParams} from 'react-router-dom';
 import Layout from "../../components/Layout/Layout";
 import Details from "../../components/Details/Details";
 import useFetch from "../../store/useFetch";
 import {Spinner} from "react-bootstrap";
 import {Element as Payload, Store} from "../../store/types";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {addCommentToElement, addToLikedComments, updateElement} from "../../store/actions/elements";
+import {NotFoundPage} from "../NotFoundPage/NotFoundPage";
 
 const Movies = () => {
-
+    const dispatch = useDispatch()
     const {id} = useParams<{ id: string }>();
     const storeMovies = useSelector((state: Store) => state.movies.elements)
-    const url = `http://localhost:4000/movies?id=`+id
+    const url = `http://localhost:4000/movies`
 
     const {status, data, error} = useFetch<Payload[]>(url)
-    
-    const onComment = (event: React.FormEvent): void => {
-        alert(event.currentTarget)
+
+    const onComment = (comment: string, id: number): void => {
+        dispatch(addCommentToElement(comment, id))
+    }
+
+    const onCommentLike = (elementId: number, commentId: number): void => {
+        if (data) {
+            const element = data[elementId]
+            dispatch(addToLikedComments(element, element.comments[commentId]))
+            dispatch(updateElement(commentId, 'commentLiked'))
+        }
     }
     
     const getMovie = () => {
         if (data) {
-            return <Details payload={storeMovies[parseInt(id)-1]} onComment={(event) => onComment(event)}/>
+            if (storeMovies.find(movie => movie.id === parseInt(id))) {
+                return <Details onCommentLike={onCommentLike} payload={storeMovies[parseInt(id) - 1]} onComment={onComment}/>
+            } else {
+                return <Redirect to="/not-found"/>
+            }
         } else if (error) {
             return <div>Error when loading data, refresh the page</div>
         } else if (status) {

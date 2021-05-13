@@ -7,6 +7,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import store from "./store/store"
 import {Provider} from "react-redux";
 import Wishlist from "./pages/Wishlist/Wishlist";
+import {NotFoundPage} from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
     return (
@@ -21,7 +22,10 @@ function App() {
                           <Route exact path="/wishlist">
                               <Wishlist/>
                           </Route>
-                          <Route path="/movies/:id" children={<Movies/>}/>
+                          <Route exact path="/movies/:id" children={<Movies/>}/>
+                          <Route path="*">
+                              <NotFoundPage/>
+                          </Route>
                       </Switch>
                   </Router>
               </ErrorBoundary>

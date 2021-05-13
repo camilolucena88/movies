@@ -1,9 +1,15 @@
-import {createStore} from 'redux'
+import {compose, createStore} from 'redux'
 import allReducers from "./reducers";
+
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION__?: typeof compose;
+    }
+}
 
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
-const store = createStore(allReducers)
+const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 
 // You can use subscribe() to update the UI in response to state changes.

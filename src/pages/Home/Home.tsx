@@ -5,7 +5,13 @@ import useFetch from "../../store/useFetch";
 import {Spinner} from 'react-bootstrap';
 import {Element, Payload, Store} from "../../store/types";
 import {useDispatch, useSelector} from "react-redux";
-import {addToLikedElements, addToWishlist, updateElement} from "../../store/actions/elements";
+import {
+    addCommentToElement,
+    addToLikedComments,
+    addToLikedElements,
+    addToWishlist,
+    updateElement
+} from "../../store/actions/elements";
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -18,14 +24,20 @@ const Home = () => {
 
     const onLiked = (event: { currentTarget: any; }): void => {
         if (data) {
-            console.log(event.currentTarget.value)
             dispatch(addToLikedElements(data[event.currentTarget.value]))
             dispatch(updateElement(event.currentTarget.value, 'liked'))
         }
     }
 
-    const onComment = () => {
-        alert('COMMENTED')
+    const onCommentLike = (elementId: number, commentId: number): void => {
+        if (data) {
+            const element = data[elementId-1]
+            dispatch(addToLikedComments(element, element.comments[commentId-1]))
+        }
+    }
+
+    const onComment = (comment : string, id: number): void => {
+        dispatch(addCommentToElement(comment, id))
     }
 
     const onBookmark = (event: { currentTarget: any; }): void => {
@@ -59,7 +71,7 @@ const Home = () => {
                     bookmark: movie.bookmark
                 }
             })
-            return <Section onLiked={onLiked} onComment={onComment} onBookmark={onBookmark} payload={movies}
+            return <Section onCommentLike={onCommentLike} onLiked={onLiked} onComment={onComment} onBookmark={onBookmark} payload={movies}
                             categories={getCategories(movies)}/>
         } else if (error) {
             return <div>Error when loading data, refresh the page</div>
