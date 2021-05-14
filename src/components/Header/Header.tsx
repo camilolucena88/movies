@@ -23,7 +23,13 @@ export default function Header({logo, brandName}: Props & typeof defaultBrandNam
                 <Link to="/"><Navbar.Brand><img className="w-10" src={logo} alt={brandName}/></Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Link to="/wishlist"><Nav className="mr-auto">
+                    <Link to="/login"><Nav className="mr-auto mx-5">
+                        Login
+                    </Nav></Link>
+                    <Link to="/register"><Nav className="mr-auto mx-5">
+                        Register
+                    </Nav></Link>
+                    <Link to="/wishlist"><Nav className="mr-auto mx-5">
                         Wishlist {movies.length}
                     </Nav></Link>
                 </Navbar.Collapse>

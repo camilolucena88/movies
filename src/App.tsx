@@ -8,6 +8,8 @@ import store from "./store/store"
 import {Provider} from "react-redux";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import {NotFoundPage} from "./pages/NotFoundPage/NotFoundPage";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 
 function App() {
     return (
@@ -23,6 +25,8 @@ function App() {
                               <Wishlist/>
                           </Route>
                           <Route exact path="/movies/:id" children={<Movies/>}/>
+                          <Route exact path="/register" children={<Register/>}/>
+                          <Route exact path="/login" children={<Login/>}/>
                           <Route path="*">
                               <NotFoundPage/>
                           </Route>
