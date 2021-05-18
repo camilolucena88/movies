@@ -16,7 +16,7 @@ import {
 const Home = () => {
     const dispatch = useDispatch()
 
-    const url = `http://localhost:4000/movies`
+    const url = `http://localhost:8000/api/places/view`
 
     const {status, data, error} = useFetch<Element[]>(url)
 
@@ -48,7 +48,7 @@ const Home = () => {
     }
 
     const getCategories = (movies: Payload[]) => {
-        let newCategories = Array.prototype.concat.apply([], movies.map((movie) => movie.type))
+        let newCategories = Array.prototype.concat.apply([], movies.map((movie: Payload) => movie.type))
         return newCategories.filter((item, pos) => newCategories.indexOf(item) === pos)
     }
 
@@ -59,9 +59,9 @@ const Home = () => {
                     id: movie.id,
                     url: '/movies/' + movie.id,
                     title: movie.name,
-                    type: movie.genres,
+                    type: movie.genres.map(genre => genre.slug),
                     message: movie.description,
-                    img: '/assets/images/movie-covers/' + movie.img,
+                    img: 'http://localhost:8000/media/files/notifications/' + movie.img,
                     slug: movie.key,
                     rating: movie.rate,
                     length: movie.length,

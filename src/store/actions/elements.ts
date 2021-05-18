@@ -11,6 +11,8 @@ export const ADD_COMMENT_TO_ELEMENT = "ADD_COMMENT_TO_ELEMENT"
 export const REMOVE_COMMENT_FROM_ELEMENT = "REMOVE_COMMENT_FROM_ELEMENT"
 export const ADD_LIKE_TO_LIKED_COMMENT = "ADD_LIKE_TO_LIKED_COMMENT"
 export const REMOVE_LIKE_FROM_LIKED_COMMENT = "REMOVE_LIKE_FROM_LIKED_COMMENT"
+export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
+export const LOGOUT_USER = "LOGOUT_USER";
 
 export type ActionTypes =
     | { type: typeof ADD_ELEMENT; payload: Element }
@@ -42,6 +44,15 @@ export const updateElement = (id: number, field: string): ActionTypes => ({
     payload: id,
     field: field
 });
+
+export type AuthTypes =
+    | { type: typeof LOGIN_USER_SUCCESS; access_token: string; }
+    | { type: typeof LOGOUT_USER; access_token: string }
+
+
+// ACTIONS
+
+
 export const addToWishlist = (element: Element): WishlistTypes => ({type: ADD_ELEMENT_TO_WISHLIST, payload: element});
 export const removeFromWishlist = (id: number): WishlistTypes => ({type: REMOVE_ELEMENT_TO_WISHLIST, payload: id});
 export const addToLikedElements = (element: Element): LikedTypes => ({type: ADD_ELEMENT_TO_LIKED, payload: element});
@@ -56,3 +67,4 @@ export const addToLikedComments = (element: Element, comment: CommentType): Comm
     payload: element,
     comment: comment
 });
+

@@ -7,13 +7,12 @@ import {Spinner} from "react-bootstrap";
 import {Element as Payload, Store} from "../../store/types";
 import {useDispatch, useSelector} from "react-redux";
 import {addCommentToElement, addToLikedComments, updateElement} from "../../store/actions/elements";
-import {NotFoundPage} from "../NotFoundPage/NotFoundPage";
 
 const Movies = () => {
     const dispatch = useDispatch()
     const {id} = useParams<{ id: string }>();
     const storeMovies = useSelector((state: Store) => state.movies.elements)
-    const url = `http://localhost:4000/movies`
+    const url = `http://localhost:8000/api/places/view`
 
     const {status, data, error} = useFetch<Payload[]>(url)
 

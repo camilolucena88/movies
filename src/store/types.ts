@@ -1,9 +1,16 @@
+import store from "./store";
+
+export interface Genres {
+    id: number
+    slug: string
+}
+
 export interface Element {
     id: number;
     key: string;
     name: string;
     description: string;
-    genres: string[];
+    genres: Genres[];
     rate: string;
     length: string;
     img: string;
@@ -34,8 +41,8 @@ export interface CommentStore {
     elements: Element[];
 }
 
-export interface Auth {
-    status: boolean
+export interface AuthStore {
+    access_token: string
 }
 
 export interface CommentType {
@@ -62,3 +69,6 @@ export interface Payload {
     liked?: boolean;
     bookmark?: boolean;
 }
+
+export type AppDispatch = typeof store.dispatch
+

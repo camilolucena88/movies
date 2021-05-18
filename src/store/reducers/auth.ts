@@ -1,11 +1,13 @@
-import {Auth} from "../types";
-import {AuthTypes} from "../actions/auth";
+import {AuthTypes, LOGIN_USER_SUCCESS, LOGOUT_USER} from "../actions/elements";
+import {AuthStore} from "../types";
 
-const authReducer = (state: Auth, action: AuthTypes) => {
+export default function authReducer(state: AuthStore = {access_token: ''}, action: AuthTypes) {
     switch (action.type) {
-        case 'SIGN_IN':
-            return !state;
+        case LOGIN_USER_SUCCESS:
+            return action.access_token;
+        case LOGOUT_USER:
+            return "";
+        default:
+            return state;
     }
 }
-
-export default authReducer;
