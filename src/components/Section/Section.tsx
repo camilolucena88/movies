@@ -1,13 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import FilterNavBar from "../Filter/FilterNavBar";
 import Container from "../Container/Container";
 import Card from "../Card/Card";
 import SearchBar from "../SearchBar/SearchBar";
-
-type State = {
-    text: string
-    types: string[]
-}
 
 type Payload = {
     id: number
@@ -30,87 +25,76 @@ type Props = {
     onCommentLike: (elementId: number, commentId: number) => void;
 }
 
-class Section extends React.Component<Props, State> {
-    state: State = {
-        text: "",
-        types: [],
+export default function Section({payload, categories, onLiked, onComment, onBookmark, onCommentLike}: Props) {
+    const [text, setText] = useState<string>('')
+    const [types, setTypes] = useState<string[]>([])
+
+    const filterByInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        setText(event.target.value)
     }
 
-    filterByInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        this.setState({
-            text: event.target.value
-        })
-    }
-
-    addFilter = (event: React.MouseEvent): void => {
+    const addFilter = (event: React.MouseEvent): void => {
         const filter = event.currentTarget.getAttribute('data-filter')
-        if (filter !== null && !this.state.types.includes(filter)) {
-            this.setState({
-                types: [...this.state.types, filter]
-            })
+        if (filter !== null && !types.includes(filter)) {
+            setTypes([...types, filter])
         }
     }
 
-    removeFilter = (event: React.MouseEvent): void => {
-        const newTypes = [...this.state.types]; // make a separate copy of the array
+    const removeFilter = (event: React.MouseEvent): void => {
+        const newTypes = [...types]; // make a separate copy of the array
         const filter = event.currentTarget.getAttribute('data-filter')
         if (filter !== null) {
             const index = newTypes.indexOf(filter)
             if (index !== -1) {
                 newTypes.splice(index, 1);
-                this.setState({
-                    types: newTypes
-                });
+                setTypes(newTypes)
             }
         }
     }
 
-    render() {
-        const filterBySearchTerm = (item: Payload) => {
-            return item.title.toLowerCase().indexOf(this.state.text.toLowerCase()) !== -1
-        }
-
-        const filterByCategory = (item: Payload) => {
-            return this.state.types.length > 0 ? this.state.types.some(type => item.type.indexOf(type) !== -1) : true
-        }
-
-        const filteredPayload = this.props.payload.filter((item: Payload) => {
-            return (
-                filterBySearchTerm(item) &&
-                filterByCategory(item)
-            )
-        })
-
-        const cards = () => {
-            if (filteredPayload.length > 0) {
-                return filteredPayload.map((payload: Payload) => {
-                    return <Card
-                        id={payload.id}
-                        payload={payload}
-                        onLiked={this.props.onLiked}
-                        onComment={this.props.onComment}
-                        onBookmark={this.props.onBookmark}
-                        onCommentLike={this.props.onCommentLike}
-                    />
-                })
-            } else {
-                return <p>No movies to show</p>
-            }
-        }
-
-        return <div>
-            <main>
-                <SearchBar value={this.state.text} onChange={(e) => this.filterByInput(e)}/>
-                <FilterNavBar removeFilter={(event: React.MouseEvent) => this.removeFilter(event)}
-                              filters={this.state.types}
-                              categories={this.props.categories}
-                              onClick={(event: React.MouseEvent) => this.addFilter(event)}/>
-                <Container>
-                    {cards()}
-                </Container>
-            </main>
-        </div>
+    const filterBySearchTerm = (item: Payload) => {
+        return item.title.toLowerCase().indexOf(text.toLowerCase()) !== -1
     }
+
+    const filterByCategory = (item: Payload) => {
+        return types.length > 0 ? types.some(type => item.type.indexOf(type) !== -1) : true
+    }
+
+    const filteredPayload = payload.filter((item: Payload) => {
+        return (
+            filterBySearchTerm(item) &&
+            filterByCategory(item)
+        )
+    })
+
+    const cards = () => {
+        if (filteredPayload.length > 0) {
+            return filteredPayload.map((payload: Payload) => {
+                return <Card
+                    id={payload.id}
+                    payload={payload}
+                    onLiked={onLiked}
+                    onComment={onComment}
+                    onBookmark={onBookmark}
+                    onCommentLike={onCommentLike}
+                />
+            })
+        } else {
+            return <p>No movies to show</p>
+        }
+    }
+
+    return <div>
+        <main>
+            <SearchBar value={text} onChange={(e) => filterByInput(e)}/>
+            <FilterNavBar removeFilter={(event: React.MouseEvent) => removeFilter(event)}
+                          filters={types}
+                          categories={categories}
+                          onClick={(event: React.MouseEvent) => addFilter(event)}/>
+            <Container>
+                {cards()}
+            </Container>
+        </main>
+    </div>
 }
 
-export default Section;

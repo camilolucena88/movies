@@ -1,39 +1,21 @@
 import React, {FormEvent, useState} from "react";
 import Layout from "../../components/Layout/Layout";
 import {Button, Form} from "react-bootstrap";
-import useFetch from "../../store/useFetch";
-import axios from "axios";
+import register from "../../services/auth/register";
 
 function Register() {
-
-    
     const [username, setUsername] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [password2, setPassword2] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     const [first_name, setFirstName] = useState<string>('')
     const [last_name, setLastName] = useState<string>('')
-    
-    const register = (event : FormEvent) => {
+
+    const signUp = (event: FormEvent) => {
         event.preventDefault()
-        axios.post('http://localhost:8000/api/register/',{
-                username: username,
-                password: password,
-                password2: password2,
-                email: email,
-                first_name: first_name,
-                last_name: last_name,
-            },{
-            headers: {
-                'Content-Type': 'application/json'
-            }
+        register({
+            username, password, password2, email, first_name, last_name
         })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
     }
 
     return (
@@ -41,10 +23,11 @@ function Register() {
             <Layout>
                 <h2>Signup page</h2>
                 <div className="container">
-                    <Form onSubmit={(event) => register(event)}>
+                    <Form onSubmit={(event: FormEvent) => signUp(event)}>
                         <Form.Group controlId="formBasicUsername">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" placeholder="Username" onChange={(event) => setUsername(event.target.value)}/>
+                            <Form.Control type="text" placeholder="Username"
+                                          onChange={(event) => setUsername(event.target.value)}/>
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                             </Form.Text>

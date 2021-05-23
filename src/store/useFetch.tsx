@@ -3,6 +3,7 @@ import axios, {AxiosRequestConfig} from 'axios'
 import {useDispatch} from "react-redux";
 import {addElement, addToLikedElements, addToWishlist} from "./actions/elements";
 import {Element} from "./types";
+import store from "./store";
 
 // State & hook output
 interface State<T> {
@@ -70,11 +71,13 @@ function useFetch<T = unknown>(
                     if (cancelRequest.current) return
                     response.data.forEach((element:Element) => {
                         dispatch(addElement(element))
-                        if(element.liked) {
-                            dispatch(addToLikedElements(element))
-                        }
-                        if(element.bookmark) {
-                            dispatch(addToWishlist(element))
+                        if(store.getState().token.access_token !== '') {
+                            if (element.liked) {
+                                dispatch(addToLikedElements(element))
+                            }
+                            if (element.bookmark) {
+                                dispatch(addToWishlist(element))
+                            }
                         }
                     })
                     setState({type: 'success', payload: response.data})

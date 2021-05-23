@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Movies from "./pages/Movies/Movies";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -11,18 +11,18 @@ import {NotFoundPage} from "./pages/NotFoundPage/NotFoundPage";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import ProtectedRoute, {ProtectedRouteProps} from "./components/Auth/PrivateRoute";
+import {history} from "./helpers/history";
 
 function App() {
     const defaultProtectedRouteProps: ProtectedRouteProps = {
-        isAuthenticated: false,
         authenticationPath: '/login',
     };
-    
+
     return (
       <div className="App">
           <Provider store={store}>
               <ErrorBoundary>
-                  <Router>
+                  <Router history={history}>
                       <Switch>
                           <Route exact path="/">
                               <Home/>

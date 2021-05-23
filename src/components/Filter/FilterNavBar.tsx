@@ -10,7 +10,7 @@ type Props = {
 
 const FilterNavBar = ({onClick, filters, removeFilter, categories}: Props) => {
     const filterBtn = ((filter: string) => {
-            return  <span className="badge rounded-pill bg-blue-400 text-white">{filter}
+            return  <span className="badge rounded-pill bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 p-20 text-white">{filter}
                         <button data-filter={filter} onClick={removeFilter.bind(this)}> x</button>
                     </span>
         }) 

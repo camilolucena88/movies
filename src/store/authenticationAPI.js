@@ -1,7 +1,7 @@
 import axiosAPI, {setNewHeaders} from "./axiosApi";
 
 export async function signUp(email, username, password) {
-    const response = await axiosAPI.post("users/create/", {
+    const response = await axiosAPI.post("auth/register/", {
         email,
         username,
         password,
@@ -11,7 +11,7 @@ export async function signUp(email, username, password) {
 }
 
 export async function obtainToken(username, password) {
-    const response = await axiosAPI.post("token/obtain/", {
+    const response = await axiosAPI.post("auth/token/obtain/", {
         username,
         password,
     });
@@ -20,7 +20,7 @@ export async function obtainToken(username, password) {
 }
 
 export async function refreshToken(refresh) {
-    const response = await axiosAPI.post("token/refresh/", {
+    const response = await axiosAPI.post("auth/token/refresh/", {
         refresh,
     });
     setNewHeaders(response);

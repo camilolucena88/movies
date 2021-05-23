@@ -5,6 +5,11 @@ export interface Genres {
     slug: string
 }
 
+export interface UserCredentials {
+    username: string,
+    password: string,
+}
+
 export interface Element {
     id: number;
     key: string;
@@ -21,8 +26,10 @@ export interface Element {
 }
 
 export interface Store {
+    token: AuthStore
     movies: MovieStore;
     wishlist: WishlistStore;
+    user: loggedUserStore;
 }
 
 export interface MovieStore {
@@ -37,12 +44,12 @@ export interface LikesStore {
     elements: Element[];
 }
 
-export interface CommentStore {
-    elements: Element[];
-}
-
 export interface AuthStore {
     access_token: string
+}
+
+export interface loggedUserStore {
+    username: string
 }
 
 export interface CommentType {

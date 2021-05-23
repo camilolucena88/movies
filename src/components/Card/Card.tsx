@@ -28,7 +28,16 @@ export default function Card({id, payload, onBookmark, onComment, onLiked, onCom
                 onBookmark={onBookmark}
             />
         }
-        return ''
+        return <CardInteraction
+            id={payload.id}
+            liked={false}
+            likes={payload.likes}
+            comments={payload.comments}
+            bookmark={false}
+            onLiked={onLiked}
+            onComment={onComment}
+            onBookmark={onBookmark}
+        />
     }
     
     return (<div className="p-4 lg:w-1/4 md:w-1/2">

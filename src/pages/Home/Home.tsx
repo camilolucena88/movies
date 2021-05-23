@@ -16,6 +16,8 @@ import {
 const Home = () => {
     const dispatch = useDispatch()
 
+    const access_token = useSelector((state: Store) => state.token.access_token)
+
     const url = `http://localhost:8000/api/places/view`
 
     const {status, data, error} = useFetch<Element[]>(url)
@@ -23,27 +25,45 @@ const Home = () => {
     const storeMovies = useSelector((state: Store) => state.movies.elements)
 
     const onLiked = (event: { currentTarget: any; }): void => {
-        if (data) {
+        if (access_token === '') {
+            alert('NEED TO LOGIN')
+        } else if (data) {
             dispatch(addToLikedElements(data[event.currentTarget.value]))
             dispatch(updateElement(event.currentTarget.value, 'liked'))
+        } else {
+            alert('SOMTHING IS WRONG')
         }
     }
 
     const onCommentLike = (elementId: number, commentId: number): void => {
-        if (data) {
-            const element = data[elementId-1]
-            dispatch(addToLikedComments(element, element.comments[commentId-1]))
+        if (access_token === '') {
+            alert('NEED TO LOGIN')
+        } else if (data) {
+            const element = data[elementId - 1]
+            dispatch(addToLikedComments(element, element.comments[commentId - 1]))
+        } else {
+            alert('SOMTHING IS WRONG')
         }
     }
 
     const onComment = (comment : string, id: number): void => {
-        dispatch(addCommentToElement(comment, id))
+        if (access_token === '') {
+            alert('NEED TO LOGIN')
+        } else if (data) {
+            dispatch(addCommentToElement(comment, id))
+        } else {
+            alert('SOMTHING IS WRONG')
+        }
     }
 
     const onBookmark = (event: { currentTarget: any; }): void => {
-        if (data) {
-            dispatch(addToWishlist(data[event.currentTarget.value-1]))
+        if (access_token === '') {
+            alert('NEED TO LOGIN')
+        } else if (data) {
+            dispatch(addToWishlist(data[event.currentTarget.value - 1]))
             dispatch(updateElement(event.currentTarget.value, 'bookmark'))
+        } else {
+            alert('SOMTHING IS WRONG')
         }
     }
 

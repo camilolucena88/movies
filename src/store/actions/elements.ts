@@ -13,6 +13,8 @@ export const ADD_LIKE_TO_LIKED_COMMENT = "ADD_LIKE_TO_LIKED_COMMENT"
 export const REMOVE_LIKE_FROM_LIKED_COMMENT = "REMOVE_LIKE_FROM_LIKED_COMMENT"
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGOUT_USER = "LOGOUT_USER";
+export const ADD_USER_DATA = "ADD_USER_DATA";
+
 
 export type ActionTypes =
     | { type: typeof ADD_ELEMENT; payload: Element }
@@ -47,8 +49,11 @@ export const updateElement = (id: number, field: string): ActionTypes => ({
 
 export type AuthTypes =
     | { type: typeof LOGIN_USER_SUCCESS; access_token: string; }
-    | { type: typeof LOGOUT_USER; access_token: string }
+    | { type: typeof LOGOUT_USER; }
 
+
+export type UserType =
+    | { type: typeof ADD_USER_DATA; username: string; }
 
 // ACTIONS
 
@@ -67,4 +72,6 @@ export const addToLikedComments = (element: Element, comment: CommentType): Comm
     payload: element,
     comment: comment
 });
-
+export const storeToken = (access_token: string): AuthTypes => ({type: LOGIN_USER_SUCCESS, access_token: access_token})
+export const removeToken = (): AuthTypes => ({type: LOGOUT_USER})
+export const storeUser = (username: string): UserType => ({type: ADD_USER_DATA, username: username})
