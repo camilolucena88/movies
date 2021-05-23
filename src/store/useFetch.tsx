@@ -1,9 +1,11 @@
 import {useEffect, useReducer, useRef} from 'react'
 import axios, {AxiosRequestConfig} from 'axios'
 import {useDispatch} from "react-redux";
-import {addElement, addToLikedElements, addToWishlist} from "./actions/elements";
+import {addElement} from "./actions/elements";
 import {Element} from "./types";
 import store from "./store";
+import {addToWishlist} from "./actions/wishlist";
+import {addToLikedElements} from "./actions/likes";
 
 // State & hook output
 interface State<T> {

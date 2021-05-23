@@ -1,30 +1,16 @@
-import {AppDispatch} from "../types";
-import {logout, obtainToken} from "../authenticationAPI";
-import {LOGIN_USER_SUCCESS, LOGOUT_USER} from "./elements";
+export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
+export const LOGOUT_USER = "LOGOUT_USER";
+export const ADD_USER_DATA = "ADD_USER_DATA";
+
+export type AuthTypes =
+    | { type: typeof LOGIN_USER_SUCCESS; access_token: string; }
+    | { type: typeof LOGOUT_USER; }
 
 
-export function loginUserSuccess(token: string) {
-    return {type: LOGIN_USER_SUCCESS, token};
-}
+export type UserType =
+    | { type: typeof ADD_USER_DATA; username: string; }
 
-export function loginUser(username: string, password: string) {
-    return async function (dispatch: AppDispatch) {
-        try {
-            const response = await obtainToken(username, password);
-            dispatch(loginUserSuccess(response.data.access));
-        } catch (error) {
-            console.log("Error obtaining token. " + error);
-        }
-    };
-}
-
-export function logoutUserSuccess() {
-    return {type: LOGOUT_USER};
-}
-
-export function logoutUser() {
-    return async function (dispatch: AppDispatch) {
-        await logout();
-        dispatch(logoutUserSuccess());
-    };
-}
+// ACTIONS
+export const storeToken = (access_token: string): AuthTypes => ({type: LOGIN_USER_SUCCESS, access_token: access_token})
+export const removeToken = (): AuthTypes => ({type: LOGOUT_USER})
+export const storeUser = (username: string): UserType => ({type: ADD_USER_DATA, username: username})

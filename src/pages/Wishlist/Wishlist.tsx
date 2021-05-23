@@ -4,12 +4,11 @@ import {Element, Payload, Store} from "../../store/types";
 import Section from "../../components/Section/Section";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    addCommentToElement,
-    addToLikedComments,
-    addToLikedElements,
-    addToWishlist,
     updateElement
 } from "../../store/actions/elements";
+import {addToWishlist} from "../../store/actions/wishlist";
+import {addToLikedElements} from "../../store/actions/likes";
+import {addCommentToElement, addToLikedComments} from "../../store/actions/comments";
 
 const Wishlist = () => {
     const dispatch = useDispatch()

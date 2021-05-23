@@ -1,11 +1,12 @@
 import {CommentType, Element, MovieStore} from "../types";
 import moment from 'moment';
 import {
-    ActionTypes, ADD_COMMENT_TO_ELEMENT,
-    ADD_ELEMENT, ADD_LIKE_TO_LIKED_COMMENT,
+    ActionTypes,
+    ADD_ELEMENT,
     REMOVE_ELEMENT,
     UPDATE_ELEMENT
 } from "../actions/elements";
+import {ADD_COMMENT_TO_ELEMENT, ADD_LIKE_TO_LIKED_COMMENT} from "../actions/comments";
 
 const removeElement = (elements: Element[], id: number): Element[] =>
     elements.filter((element: Element) => element.id !== id)

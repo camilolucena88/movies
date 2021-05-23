@@ -3,8 +3,9 @@ import ReverseBtn from "../Buttons/ReverseBtn";
 import RatingStar from "../Rating/RatingStar";
 import {Element as Payload} from "./../../store/types"
 import { useDispatch } from "react-redux";
-import {addToWishlist, updateElement} from "../../store/actions/elements";
+import {updateElement} from "../../store/actions/elements";
 import CommentDetails from "./CommentDetails";
+import {addToWishlist} from "../../store/actions/wishlist";
 
 type Props = {
     payload: Payload,

@@ -6,12 +6,11 @@ import {Spinner} from 'react-bootstrap';
 import {Element, Payload, Store} from "../../store/types";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    addCommentToElement,
-    addToLikedComments,
-    addToLikedElements,
-    addToWishlist,
     updateElement
 } from "../../store/actions/elements";
+import {addToWishlist} from "../../store/actions/wishlist";
+import {addToLikedElements} from "../../store/actions/likes";
+import {addCommentToElement, addToLikedComments} from "../../store/actions/comments";
 
 const Home = () => {
     const dispatch = useDispatch()

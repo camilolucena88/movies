@@ -6,7 +6,8 @@ import useFetch from "../../store/useFetch";
 import {Spinner} from "react-bootstrap";
 import {Element as Payload, Store} from "../../store/types";
 import {useDispatch, useSelector} from "react-redux";
-import {addCommentToElement, addToLikedComments, updateElement} from "../../store/actions/elements";
+import {updateElement} from "../../store/actions/elements";
+import {addCommentToElement, addToLikedComments} from "../../store/actions/comments";
 
 const Movies = () => {
     const dispatch = useDispatch()

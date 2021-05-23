@@ -1,5 +1,5 @@
 import {Element, WishlistStore} from "../types";
-import {ADD_ELEMENT_TO_WISHLIST, REMOVE_ELEMENT_TO_WISHLIST, WishlistTypes} from "../actions/elements";
+import {ADD_ELEMENT_TO_WISHLIST, REMOVE_ELEMENT_TO_WISHLIST, WishlistTypes} from "../actions/wishlist";
 
 const removeFromWishlist = (elements: Element[], id: number): Element[] =>
     elements.filter((element: Element) => element.id !== id)

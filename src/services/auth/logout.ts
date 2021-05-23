@@ -1,5 +1,5 @@
 import store from "../../store/store";
-import {removeToken} from "../../store/actions/elements";
+import {removeToken} from "../../store/actions/auth";
 
 const logout = () => {
     localStorage.removeItem("access_token");

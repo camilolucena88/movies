@@ -2,8 +2,8 @@ import axios from "axios";
 import {UserCredentials} from "../../store/types";
 import store from "../../store/store";
 import {history} from "../../helpers/history";
-import {storeToken, storeUser} from "../../store/actions/elements";
 import userDetails from "./userDetails";
+import {storeToken, storeUser} from "../../store/actions/auth";
 
 const login = ({username, password} : UserCredentials) => {
     axios.post('http://localhost:8000/api/auth/token/obtain/', {

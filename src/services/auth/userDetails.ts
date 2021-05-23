@@ -1,7 +1,8 @@
 import axios from "axios";
-import {addToLikedElements, updateElement} from "../../store/actions/elements";
+import {updateElement} from "../../store/actions/elements";
 import store from "../../store/store";
 import {Element} from "../../store/types";
+import {addToLikedElements} from "../../store/actions/likes";
 
 type Likes = {
     id: number,
