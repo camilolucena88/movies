@@ -2,17 +2,12 @@ import React from 'react';
 import Layout from "../../components/Layout/Layout";
 import {Element, Payload, Store} from "../../store/types";
 import Section from "../../components/Section/Section";
-import {useDispatch, useSelector} from "react-redux";
-import {
-    updateElement
-} from "../../store/actions/elements";
-import {addToWishlist} from "../../store/actions/wishlist";
-import {addToLikedElements} from "../../store/actions/likes";
-import {addCommentToElement, addToLikedComments} from "../../store/actions/comments";
+import {useSelector} from "react-redux";
+import {onComment, onCommentLike} from "../../services/userInteraction/comments";
+import onLiked from "../../services/userInteraction/likes";
+import {onBookmark} from "../../services/userInteraction/wishlist";
 
 const Wishlist = () => {
-    const dispatch = useDispatch()
-
     const wishlist = useSelector((state: Store) => state.wishlist.elements)
 
     const moviesElements = useSelector((state: Store) => state.movies.elements)
@@ -20,31 +15,6 @@ const Wishlist = () => {
     const getCategories = (movies: Element[]) => {
         let newCategories = Array.prototype.concat.apply([], movies.map((movie) => movie.genres))
         return newCategories.filter((item, pos) => newCategories.indexOf(item) === pos)
-    }
-
-    const onLiked = (event: { currentTarget: any; }): void => {
-        if (wishlist) {
-            dispatch(addToLikedElements(wishlist[event.currentTarget.value]))
-            dispatch(updateElement(event.currentTarget.value, 'liked'))
-        }
-    }
-
-    const onCommentLike = (elementId: number, commentId: number): void => {
-        if (wishlist) {
-            const element = wishlist[elementId - 1]
-            dispatch(addToLikedComments(element, element.comments[commentId - 1]))
-        }
-    }
-
-    const onBookmark = (event: { currentTarget: any; }): void => {
-        if (wishlist) {
-            dispatch(addToWishlist(wishlist[event.currentTarget.value - 1]))
-            dispatch(updateElement(event.currentTarget.value, 'bookmark'))
-        }
-    }
-
-    const onComment = (comment: string, id: number): void => {
-        dispatch(addCommentToElement(comment, id))
     }
 
     const getMovies = () => {
@@ -66,7 +36,10 @@ const Wishlist = () => {
                 bookmark: newMovie.bookmark
             }
         })
-        return <Section onCommentLike={onCommentLike} onBookmark={onBookmark} onLiked={onLiked} onComment={onComment}
+        return <Section onCommentLike={(elementId, commentId) => onCommentLike(elementId, commentId, wishlist)}
+                        onLiked={(event: { currentTarget: any; }) => onLiked(event.currentTarget.value, wishlist)}
+                        onComment={(comment, id) => onComment(comment, id, wishlist)}
+                        onBookmark={(event: { currentTarget: any; }) => onBookmark(event.currentTarget.value, wishlist)}
                         payload={movies} categories={getCategories(wishlist)}/>
     }
 

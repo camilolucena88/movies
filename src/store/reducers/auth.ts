@@ -1,5 +1,5 @@
-import {AuthTypes, LOGIN_USER_SUCCESS, LOGOUT_USER} from "../actions/elements";
 import {AuthStore} from "../types";
+import {AuthTypes, LOGIN_USER_SUCCESS, LOGOUT_USER} from "../actions/auth";
 
 export default function authReducer(state: AuthStore = {access_token: ''}, action: AuthTypes) : AuthStore {
     switch (action.type) {

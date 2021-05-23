@@ -6,6 +6,7 @@ import {Element} from "./types";
 import store from "./store";
 import {addToWishlist} from "./actions/wishlist";
 import {addToLikedElements} from "./actions/likes";
+import userIsLogged from "../services/auth/userStatus";
 
 // State & hook output
 interface State<T> {
@@ -62,7 +63,6 @@ function useFetch<T = unknown>(
 
         const fetchData = async () => {
             setState({type: 'request'})
-
             if (cache.current[url]) {
                 setState({type: 'success', payload: cache.current[url]})
             } else {
@@ -73,7 +73,8 @@ function useFetch<T = unknown>(
                     if (cancelRequest.current) return
                     response.data.forEach((element:Element) => {
                         dispatch(addElement(element))
-                        if(store.getState().token.access_token !== '') {
+                        if(userIsLogged()) {
+                            console.log(element)
                             if (element.liked) {
                                 dispatch(addToLikedElements(element))
                             }

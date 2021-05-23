@@ -1,14 +1,20 @@
 import axios from "axios";
-import {updateElement} from "../../store/actions/elements";
-import store from "../../store/store";
 import {Element} from "../../store/types";
-import {addToLikedElements} from "../../store/actions/likes";
+import onLiked from "../userInteraction/likes";
+import {onBookmark} from "../userInteraction/wishlist";
 
 type Likes = {
     id: number,
     place: Element,
     type: number,
     created_by: number,
+    timestamp: string
+}
+
+type Bookmark = {
+    created_by: string
+    id: number
+    place: Element
     timestamp: string
 }
 
@@ -20,10 +26,11 @@ const userDetails = (username: string, token: string) => {
         }
     })
         .then(function (response) {
-            console.log(response.data)
             response.data.liked.forEach((like:Likes) => {
-                store.dispatch(addToLikedElements(like.place))
-                updateElement(like.place.id, 'liked')
+                onLiked(like.place.id, [like.place])
+            })
+            response.data.bookmarks.forEach((element:Bookmark) => {
+                onBookmark(element.place.id, [element.place])
             })
         })
         .catch(function (error) {

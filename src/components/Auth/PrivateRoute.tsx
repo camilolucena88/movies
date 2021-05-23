@@ -1,13 +1,13 @@
 import {Redirect, Route, RouteProps} from 'react-router';
 import store from "../../store/store";
+import userIsLogged from "../../services/auth/userStatus";
 
 export type ProtectedRouteProps = {
     authenticationPath: string;
 } & RouteProps;
 
 export default function ProtectedRoute({authenticationPath, ...routeProps}: ProtectedRouteProps) {
-    const access_token = store.getState().token.access_token
-    if (access_token !== '') {
+    if (userIsLogged()) {
         return <Route {...routeProps} />;
     } else {
         return <Redirect to={{pathname: authenticationPath}}/>;
