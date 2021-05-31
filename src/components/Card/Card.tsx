@@ -16,24 +16,12 @@ type Props = {
 
 export default function Card({id, payload, onBookmark, onComment, onLiked, onCommentLike}: Props) {
     const addCardInteraction = () => {
-        if ((payload.liked !== undefined) && (payload.likes !== undefined) && (payload.comments !== undefined) && (payload.bookmark !== undefined)) {
-            return <CardInteraction
-                id={payload.id}
-                liked={payload.liked}
-                likes={payload.likes}
-                comments={payload.comments}
-                bookmark={payload.bookmark}
-                onLiked={onLiked}
-                onComment={onComment}
-                onBookmark={onBookmark}
-            />
-        }
         return <CardInteraction
             id={payload.id}
-            liked={false}
+            liked={payload.liked !== undefined ? payload.liked : false}
             likes={payload.likes}
             comments={payload.comments}
-            bookmark={false}
+            bookmark={payload.bookmark !== undefined ? payload.bookmark : false}
             onLiked={onLiked}
             onComment={onComment}
             onBookmark={onBookmark}

@@ -4,7 +4,7 @@ import {Element, Payload, Store} from "../../store/types";
 import Section from "../../components/Section/Section";
 import {useSelector} from "react-redux";
 import {onComment, onCommentLike} from "../../services/userInteraction/comments";
-import onLiked from "../../services/userInteraction/likes";
+import {onLiked} from "../../services/userInteraction/likes";
 import {onBookmark} from "../../services/userInteraction/wishlist";
 
 const Wishlist = () => {

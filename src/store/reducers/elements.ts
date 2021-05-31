@@ -37,8 +37,14 @@ const updateElement = (elements: Element[], elementId: number, field: string): E
     return elements.map(oldElement => {
         if (oldElement.id == elementId) {
             if (field === 'bookmark') {
-                oldElement.bookmark = !oldElement.bookmark
-            } else if (field === 'liked') {
+                if(oldElement.bookmark) {
+                    oldElement.bookmark = !oldElement.bookmark
+                } else {
+                    oldElement.bookmark = true
+                }
+            } else if (field === 'setLiked') {
+                oldElement.liked = !oldElement.liked
+            }  else if (field === 'liked') {
                 oldElement.liked = !oldElement.liked
                 if (oldElement.liked) {
                     oldElement.likes = oldElement.likes + 1
@@ -56,14 +62,21 @@ const updateElement = (elements: Element[], elementId: number, field: string): E
 const addToLikedComments = (elements: Element[], element: Element, comment: CommentType) => {
     return elements.map(oldElement => {
         if (oldElement.id === element.id) {
-            let oldComment = oldElement.comments[comment.id-1]
-            oldComment.liked = !(oldComment.liked)
-            if (oldComment.liked) {
-                oldComment.likes = oldComment.likes + 1
-            } else {
-                oldComment.likes = oldComment.likes - 1
+            let oldComment = oldElement.comments.find(oldComment => oldComment.id === comment.id)
+            let oldCommentIndex = oldElement.comments.findIndex(oldComment => oldComment.id === comment.id)
+            if (oldComment) {
+                oldComment.liked = !(oldComment.liked)
+                if (oldComment.liked) {
+                    if(isNaN(oldComment.likes)) {
+                        oldComment.likes = 1
+                    } else {
+                        oldComment.likes = oldComment.likes + 1
+                    }
+                } else {
+                    oldComment.likes = oldComment.likes - 1
+                }
+                oldElement.comments[oldCommentIndex] = oldComment
             }
-            oldElement.comments[comment.id-1] = oldComment
             return oldElement
         }
         return oldElement

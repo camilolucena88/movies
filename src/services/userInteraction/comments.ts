@@ -2,24 +2,33 @@ import {addCommentToElement, addToLikedComments} from "../../store/actions/comme
 import {Element} from "../../store/types";
 import userIsLogged from "../auth/userStatus";
 import store from "../../store/store";
+import {COMPLETED, ERROR, LOGIN_REQUIRED} from "./const";
 
-export const onCommentLike = (elementId: number, commentId: number, data: Element[]): void => {
+export const onCommentLike = (elementId: number, commentId: number, data: Element[]): number => {
     if (!userIsLogged()) {
-        alert('NEED TO LOGIN')
+        return LOGIN_REQUIRED
     } else if (data) {
-        const element = data[elementId - 1]
-        store.dispatch(addToLikedComments(element, element.comments[commentId - 1]))
+        const element = data.find(element => elementId == element.id)
+        if(element){
+            const comment = element.comments.find(comment => commentId == comment.id)
+            if (comment) {
+                store.dispatch(addToLikedComments(element, comment))
+                return COMPLETED
+            }
+        }
+        return ERROR
     } else {
-        alert('SOMTHING IS WRONG')
+        return ERROR
     }
 }
 
-export const onComment = (comment: string, id: number, data: Element[]): void => {
+export const onComment = (comment: string, id: number, data: Element[]): number => {
     if (!userIsLogged()) {
-        alert('NEED TO LOGIN')
+        return LOGIN_REQUIRED
     } else if (data) {
         store.dispatch(addCommentToElement(comment, id))
+        return COMPLETED
     } else {
-        alert('SOMTHING IS WRONG')
+        return ERROR
     }
 }

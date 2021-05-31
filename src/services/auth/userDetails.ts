@@ -1,7 +1,7 @@
 import axios from "axios";
 import {Element} from "../../store/types";
-import onLiked from "../userInteraction/likes";
-import {onBookmark} from "../userInteraction/wishlist";
+import {getLiked} from "../userInteraction/likes";
+import {getBookmarked, onBookmark} from "../userInteraction/wishlist";
 
 type Likes = {
     id: number,
@@ -27,10 +27,10 @@ const userDetails = (username: string, token: string) => {
     })
         .then(function (response) {
             response.data.liked.forEach((like:Likes) => {
-                onLiked(like.place.id, [like.place])
+                getLiked(like.place.id, [like.place])
             })
             response.data.bookmarks.forEach((element:Bookmark) => {
-                onBookmark(element.place.id, [element.place])
+                getBookmarked(element.place.id, [element.place])
             })
         })
         .catch(function (error) {
