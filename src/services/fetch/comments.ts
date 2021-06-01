@@ -14,7 +14,7 @@ class Comments extends ApiService {
     create(placeId: number, description: Comment) {
         return this.post(this.url + placeId, description).then(
             res => res
-        )
+        ).catch(err => console.log(err))
     }
 
     /**
@@ -25,7 +25,7 @@ class Comments extends ApiService {
     remove(placeId: number) {
         return this.delete(this.url + placeId).then(
             res => res
-        )
+        ).catch(err => console.log(err))
     }
 }
 

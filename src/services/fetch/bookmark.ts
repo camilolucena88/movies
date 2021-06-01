@@ -12,7 +12,7 @@ class Bookmark extends ApiService {
     create(placeId: number) {
         return this.post(this.url + placeId).then(
             res => res
-        )
+        ).catch(err => console.log(err))
     }
 
     /**
@@ -23,7 +23,7 @@ class Bookmark extends ApiService {
     remove(placeId: number) {
         return this.delete(this.url + placeId).then(
             res => res
-        )
+        ).catch(err => console.log(err))
     }
 }
 
