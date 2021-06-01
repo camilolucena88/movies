@@ -1,16 +1,18 @@
 import ApiService from "./apiService";
+import {Comment} from "../../store/types"
 
 class Comments extends ApiService {
 
-    url = 'places/bookmark/'
+    url = 'places/comment/'
 
     /**
      * POST method to create a like on the backend
      *
      * @param placeId
+     * @param description
      */
-    create(placeId: number) {
-        return this.post(this.url + placeId).then(
+    create(placeId: number, description: Comment) {
+        return this.post(this.url + placeId, description).then(
             res => res
         )
     }

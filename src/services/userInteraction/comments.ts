@@ -3,6 +3,7 @@ import {Element} from "../../store/types";
 import userIsLogged from "../auth/userStatus";
 import store from "../../store/store";
 import {COMPLETED, ERROR, LOGIN_REQUIRED} from "./const";
+import Comments from "../fetch/comments";
 
 export const onCommentLike = (elementId: number, commentId: number, data: Element[]): number => {
     if (!userIsLogged()) {
@@ -27,7 +28,12 @@ export const onComment = (comment: string, id: number, data: Element[]): number 
         return LOGIN_REQUIRED
     } else if (data) {
         store.dispatch(addCommentToElement(comment, id))
-        return COMPLETED
+        const fetchComment = new Comments()
+        if (fetchComment.create(id, {"description": comment})) {
+            return COMPLETED
+        } else {
+            return ERROR
+        }
     } else {
         return ERROR
     }

@@ -61,6 +61,10 @@ export interface CommentType {
     replies: number[]
 }
 
+export interface Comment {
+    description: string
+}
+
 export interface Payload {
     id: number;
     url: string;
