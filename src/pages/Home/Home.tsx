@@ -46,7 +46,7 @@ const Home = () => {
                     bookmark: movie.bookmark
                 }
             })
-            return <Section onCommentLike={(elementId, commentId) => onCommentLike(elementId, commentId, data) === 0 ? '' : handleShow() }
+            return <Section onCommentLike={(elementId, commentId) => onCommentLike(elementId, commentId) === 0 ? '' : handleShow() }
                             onLiked={(event: { currentTarget: any; }) => onLiked(event.currentTarget.value, data)  === 0 ? '' : handleShow()}
                             onComment={(comment, id) => onComment(comment, id, data)  === 0 ? '' : handleShow()}
                             onBookmark={(event: { currentTarget: any; }) => onBookmark(event.currentTarget.value, data) === 0 ? '' : handleShow()}

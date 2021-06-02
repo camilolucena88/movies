@@ -52,8 +52,14 @@ export interface loggedUserStore {
     username: string
 }
 
+export interface CommentLikedStore {
+    placeId: number
+    commentsLiked: CommentType[]
+}
+
 export interface CommentType {
     id: number,
+    placeId: number,
     comment: string,
     likes: number,
     liked: boolean,

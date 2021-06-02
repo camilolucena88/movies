@@ -36,7 +36,7 @@ const Wishlist = () => {
                 bookmark: newMovie.bookmark
             }
         })
-        return <Section onCommentLike={(elementId, commentId) => onCommentLike(elementId, commentId, wishlist)}
+        return <Section onCommentLike={(elementId, commentId) => onCommentLike(elementId, commentId)}
                         onLiked={(event: { currentTarget: any; }) => onLiked(event.currentTarget.value, wishlist)}
                         onComment={(comment, id) => onComment(comment, id, wishlist)}
                         onBookmark={(event: { currentTarget: any; }) => onBookmark(event.currentTarget.value, wishlist)}

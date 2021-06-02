@@ -74,7 +74,6 @@ function useFetch<T = unknown>(
                     response.data.forEach((element:Element) => {
                         dispatch(addElement(element))
                         if(userIsLogged()) {
-                            console.log(element)
                             if (element.liked) {
                                 dispatch(addToLikedElements(element))
                             }

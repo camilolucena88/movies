@@ -7,7 +7,7 @@ import {Spinner} from "react-bootstrap";
 import {Element as Payload, Store} from "../../store/types";
 import {useDispatch, useSelector} from "react-redux";
 import {updateElement} from "../../store/actions/elements";
-import {addCommentToElement, addToLikedComments} from "../../store/actions/comments";
+import {addCommentToElement, addLikedCommentsToElement} from "../../store/actions/comments";
 
 const Movies = () => {
     const dispatch = useDispatch()
@@ -24,7 +24,7 @@ const Movies = () => {
     const onCommentLike = (elementId: number, commentId: number): void => {
         if (data) {
             const element = data[elementId]
-            dispatch(addToLikedComments(element, element.comments[commentId]))
+            dispatch(addLikedCommentsToElement(element, element.comments[commentId], 'liked'))
             dispatch(updateElement(commentId, 'commentLiked'))
         }
     }

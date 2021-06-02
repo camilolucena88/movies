@@ -22,6 +22,7 @@ const addCommentToElement = (elements: Element[], elementId: number, comment: st
         if (oldElement.id == elementId) {
             return oldElement.comments?.push({
                 id: oldElement.comments.length + 1,
+                placeId: oldElement.id,
                 comment: comment,
                 likes: 0,
                 timestamp: moment().format("YYYY-MM-DD HH:mm:ss"),
@@ -37,14 +38,14 @@ const updateElement = (elements: Element[], elementId: number, field: string): E
     return elements.map(oldElement => {
         if (oldElement.id == elementId) {
             if (field === 'bookmark') {
-                if(oldElement.bookmark) {
+                if (oldElement.bookmark) {
                     oldElement.bookmark = !oldElement.bookmark
                 } else {
                     oldElement.bookmark = true
                 }
             } else if (field === 'setLiked') {
                 oldElement.liked = !oldElement.liked
-            }  else if (field === 'liked') {
+            } else if (field === 'liked') {
                 oldElement.liked = !oldElement.liked
                 if (oldElement.liked) {
                     oldElement.likes = oldElement.likes + 1
@@ -59,15 +60,17 @@ const updateElement = (elements: Element[], elementId: number, field: string): E
 }
 
 
-const addToLikedComments = (elements: Element[], element: Element, comment: CommentType) => {
+const addToLikedComments = (elements: Element[], element: Element, comment: CommentType, field: string) => {
     return elements.map(oldElement => {
-        if (oldElement.id === element.id) {
+        if (oldElement.id == element.id) {
             let oldComment = oldElement.comments.find(oldComment => oldComment.id === comment.id)
             let oldCommentIndex = oldElement.comments.findIndex(oldComment => oldComment.id === comment.id)
-            if (oldComment) {
-                oldComment.liked = !(oldComment.liked)
+            if (field === 'setLiked' && oldComment) {
+                oldComment.liked = true
+            } else if (oldComment) {
+                oldComment.liked = isNaN(oldComment.likes) ? true : !(oldComment.liked)
                 if (oldComment.liked) {
-                    if(isNaN(oldComment.likes)) {
+                    if (isNaN(oldComment.likes)) {
                         oldComment.likes = 1
                     } else {
                         oldComment.likes = oldComment.likes + 1
@@ -108,7 +111,7 @@ function elementsReducer(state: MovieStore = {elements: []}, action: ActionTypes
         case ADD_LIKE_TO_LIKED_COMMENT:
             return {
                 ...state,
-                elements: addToLikedComments(state.elements, action.payload, action.comment)
+                elements: addToLikedComments(state.elements, action.payload, action.comment, action.field)
             }
         default:
             return state

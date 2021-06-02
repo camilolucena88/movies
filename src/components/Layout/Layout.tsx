@@ -7,8 +7,8 @@ type Props = {
 };
 
 const Layout = ({children}: Props) => {
-    const brandName = "Escuela Uno"
-    const logo = "https://escuelauno.com/wp-content/uploads/2020/09/untitled-1.png"
+    const brandName = "MaltaLovers"
+    const logo = "https://maltalovers.com/wp-content/uploads/2019/01/Transparent-Background-Logox80x80.png"
     
     return <div>
         <Header brandName={brandName} logo={logo}/>
