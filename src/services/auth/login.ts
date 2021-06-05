@@ -5,7 +5,7 @@ import {history} from "../../helpers/history";
 import userDetails from "./userDetails";
 import {storeToken, storeUser} from "../../store/actions/auth";
 
-const baseURL = process.env.API_URL;
+const baseURL = process.env.REACT_APP_API_URL;
 const login = ({username, password} : UserCredentials) => {
     axios.post(baseURL + '/api/auth/token/obtain/', {
         username: username,

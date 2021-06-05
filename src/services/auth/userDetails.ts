@@ -26,7 +26,7 @@ type LikesComment = {
     timestamp: string
 }
 
-const baseURL = process.env.API_URL;
+const baseURL = process.env.REACT_APP_API_URL;
 
 const userDetails = (username: string, token: string) => {
     axios.get(baseURL + '/api/users/'+username, {

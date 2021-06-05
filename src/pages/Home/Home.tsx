@@ -11,7 +11,7 @@ import {onBookmark} from "../../services/userInteraction/wishlist";
 import Alert from "../../components/Alert/Alert";
 
 const Home = () => {
-    const baseURL = process.env.API_URL;
+    const baseURL = process.env.REACT_APP_API_URL;
 
     const url = baseURL + `/api/places/view`
 

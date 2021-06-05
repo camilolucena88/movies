@@ -12,7 +12,7 @@ type Props = {
     onComment: (comment: string, id: number) => void;
     onCommentLike: (elementId: number, commentId: number) => void;
 }
-const baseURL = process.env.API_URL;
+const baseURL = process.env.REACT_APP_API_URL;
 const Details = ({payload, onComment, onCommentLike}: Props) => {
     
     const dispatch = useDispatch()

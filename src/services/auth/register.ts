@@ -9,7 +9,7 @@ type RegistrationDetails = {
     first_name: string,
     last_name: string,
 }
-const baseURL = process.env.API_URL
+const baseURL = process.env.REACT_APP_API_URL
 
 const register = ({username, password, password2, email, first_name, last_name}: RegistrationDetails) => {
     axios.post(baseURL + '/api/auth/register/', {

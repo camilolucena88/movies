@@ -3,7 +3,7 @@ import store from "../../store/store";
 
 class ApiService {
 
-    baseURL = process.env.API_URL;
+    baseURL = process.env.REACT_APP_API_URL;
 
     async post(url: string, data?: object) {
         await axios.post(this.baseURL + '/api/' + url, data, {

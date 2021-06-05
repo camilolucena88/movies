@@ -8,7 +8,7 @@ import {onLiked} from "../../services/userInteraction/likes";
 import {onBookmark} from "../../services/userInteraction/wishlist";
 
 const Wishlist = () => {
-    const baseURL = process.env.API_URL;
+    const baseURL = process.env.REACT_APP_API_URL;
     const wishlist = useSelector((state: Store) => state.wishlist.elements)
 
     const moviesElements = useSelector((state: Store) => state.movies.elements)
