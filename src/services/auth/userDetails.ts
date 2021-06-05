@@ -26,8 +26,10 @@ type LikesComment = {
     timestamp: string
 }
 
+const baseURL = process.env.API_URL;
+
 const userDetails = (username: string, token: string) => {
-    axios.get('http://localhost:8000/api/users/'+username, {
+    axios.get(baseURL + '/api/users/'+username, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'JWT ' + token

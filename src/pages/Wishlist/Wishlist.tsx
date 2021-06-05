@@ -8,6 +8,7 @@ import {onLiked} from "../../services/userInteraction/likes";
 import {onBookmark} from "../../services/userInteraction/wishlist";
 
 const Wishlist = () => {
+    const baseURL = process.env.API_URL;
     const wishlist = useSelector((state: Store) => state.wishlist.elements)
 
     const moviesElements = useSelector((state: Store) => state.movies.elements)
@@ -26,7 +27,7 @@ const Wishlist = () => {
                 title: newMovie.name,
                 type: [],
                 message: newMovie.description,
-                img: 'http://localhost:8000/media/files/notifications/' + newMovie.img,
+                img: baseURL + '/media/files/notifications/' + newMovie.img,
                 slug: newMovie.key,
                 rating: newMovie.rate,
                 length: newMovie.length,

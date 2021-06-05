@@ -13,7 +13,8 @@ const Movies = () => {
     const dispatch = useDispatch()
     const {id} = useParams<{ id: string }>();
     const storeMovies = useSelector((state: Store) => state.movies.elements)
-    const url = `http://localhost:8000/api/places/view`
+    const baseURL = process.env.API_URL;
+    const url = baseURL+`/api/places/view`
 
     const {status, data, error} = useFetch<Payload[]>(url)
 

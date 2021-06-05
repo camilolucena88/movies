@@ -9,9 +9,10 @@ type RegistrationDetails = {
     first_name: string,
     last_name: string,
 }
+const baseURL = process.env.API_URL
 
 const register = ({username, password, password2, email, first_name, last_name}: RegistrationDetails) => {
-    axios.post('http://localhost:8000/api/auth/register/', {
+    axios.post(baseURL + '/api/auth/register/', {
         username: username,
         password: password,
         password2: password2,

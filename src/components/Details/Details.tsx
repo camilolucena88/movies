@@ -12,7 +12,7 @@ type Props = {
     onComment: (comment: string, id: number) => void;
     onCommentLike: (elementId: number, commentId: number) => void;
 }
-
+const baseURL = process.env.API_URL;
 const Details = ({payload, onComment, onCommentLike}: Props) => {
     
     const dispatch = useDispatch()
@@ -27,7 +27,7 @@ const Details = ({payload, onComment, onCommentLike}: Props) => {
         <div className="container px-5 py-24 mx-auto">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
                 <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-                     src={"http://localhost:8000/media/files/notifications/"+payload.img}></img>
+                     src={baseURL + "/media/files/notifications/"+payload.img}></img>
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                     <h2 className="text-sm title-font text-gray-500 tracking-widest">{payload.genres[0].slug}</h2>
                     <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{payload.name}</h1>

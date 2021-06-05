@@ -5,8 +5,9 @@ import {history} from "../../helpers/history";
 import userDetails from "./userDetails";
 import {storeToken, storeUser} from "../../store/actions/auth";
 
+const baseURL = process.env.API_URL;
 const login = ({username, password} : UserCredentials) => {
-    axios.post('http://localhost:8000/api/auth/token/obtain/', {
+    axios.post(baseURL + '/api/auth/token/obtain/', {
         username: username,
         password: password,
     }, {
