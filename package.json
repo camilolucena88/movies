@@ -20,8 +20,6 @@
     "@types/tailwindcss": "^2.0.2",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
-    "framer": "^1.2.29",
-    "framer-motion": "^4.1.11",
     "moment": "^2.29.1",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
