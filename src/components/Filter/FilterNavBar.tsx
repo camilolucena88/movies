@@ -30,7 +30,7 @@ const FilterNavBar = ({onClick, filters, removeFilter, categories}: Props) => {
                 }
             `}
         </style>
-        <div className="pt-10 mt-10 container flex">
+        <div className="pt-2 mt-2 container flex">
             <div className="flex-1 text-left">
                 {addFilters}
             </div>

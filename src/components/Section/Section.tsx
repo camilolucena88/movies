@@ -80,7 +80,7 @@ export default function Section({payload, categories, onLiked, onComment, onBook
                 />
             })
         } else {
-            return <p>No movies to show</p>
+            return <p>No places to show</p>
         }
     }
 
@@ -91,6 +91,7 @@ export default function Section({payload, categories, onLiked, onComment, onBook
                           filters={types}
                           categories={categories}
                           onClick={(event: React.MouseEvent) => addFilter(event)}/>
+            <div className="text-justify mx-5"><small>Total: {filteredPayload.length}</small></div>
             <Container>
                 {cards()}
             </Container>

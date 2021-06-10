@@ -22,7 +22,7 @@ export default function Header({logo, brandName}: Props & typeof defaultBrandNam
     const access_token = useSelector((state: Store) => state.token.access_token)
     
     return <div>
-        <header className="text-gray-600 body-font shadow-sm mb-10">
+        <header className="text-gray-600 body-font shadow-sm">
             <Navbar bg="light" expand="lg">
                 <Link to="/"><Navbar.Brand><img className="w-10" src={logo} alt={brandName}/></Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>

@@ -37,7 +37,7 @@ export default function Card({id, payload, onBookmark, onComment, onLiked, onCom
                 {addCardInteraction()}
                 <h2 className="title-font font-medium text-lg text-gray-900">Alper Kamu</h2>
                 <h3 className="text-gray-500 mb-3 card-height-title"><Link to={payload.url}>{payload.title}</Link></h3>
-                <p className="mb-4 comments"><small>{payload.message}</small></p>
+                <p className="mb-1 comments"><small>{payload.message}</small></p>
                 <span className="ml-2 inline-flex">
 
                 </span>
