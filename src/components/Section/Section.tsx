@@ -3,18 +3,7 @@ import FilterNavBar from "../Filter/FilterNavBar";
 import Container from "../Container/Container";
 import Card from "../Card/Card";
 import SearchBar from "../SearchBar/SearchBar";
-
-type Payload = {
-    id: number
-    url: string,
-    title: string,
-    type: string[],
-    message: string,
-    img: string
-    slug?: string,
-    rating?: string,
-    length?: string,
-}
+import {Payload} from "../../store/types";
 
 type Props = {
     payload: Payload[]
@@ -91,7 +80,7 @@ export default function Section({payload, categories, onLiked, onComment, onBook
                           filters={types}
                           categories={categories}
                           onClick={(event: React.MouseEvent) => addFilter(event)}/>
-            <div className="text-justify mx-5"><small>Total: {filteredPayload.length}</small></div>
+            <div className="text-justify container"><small>Total: {filteredPayload.length}</small></div>
             <Container>
                 {cards()}
             </Container>

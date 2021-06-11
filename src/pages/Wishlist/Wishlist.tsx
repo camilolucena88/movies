@@ -28,6 +28,7 @@ const Wishlist = () => {
                 type: [],
                 message: newMovie.description,
                 img: baseURL + '/media/files/notifications/' + newMovie.img,
+                thumbnail: baseURL + newMovie.thumbnail,
                 slug: newMovie.key,
                 rating: newMovie.rate,
                 length: newMovie.length,

@@ -23,30 +23,31 @@ const Home = () => {
 
     const handleShow = () => setShow(true);
 
-    const storeMovies = useSelector((state: Store) => state.movies.elements)
+    const storeListings = useSelector((state: Store) => state.movies.elements)
 
-    const getCategories = (movies: Payload[]) => {
-        let newCategories = Array.prototype.concat.apply([], movies.map((movie: Payload) => movie.type))
+    const getCategories = (listings: Payload[]) => {
+        let newCategories = Array.prototype.concat.apply([], listings.map((movie: Payload) => movie.type))
         return newCategories.filter((item, pos) => newCategories.indexOf(item) === pos)
     }
 
-    const getMovies = () => {
+    const getListings = () => {
         if (data) {
-            const movies = storeMovies.map((movie): Payload => {
+            const listings = storeListings.map((listing): Payload => {
                 return {
-                    id: movie.id,
-                    url: '/movies/' + movie.id,
-                    title: movie.name,
-                    type: movie.genres.map(genre => genre.slug),
-                    message: movie.description,
-                    img: baseURL + '/media/files/notifications/' + movie.img,
-                    slug: movie.key,
-                    rating: movie.rate,
-                    length: movie.length,
-                    likes: movie.likes,
-                    comments: movie.comments,
-                    liked: movie.liked,
-                    bookmark: movie.bookmark
+                    id: listing.id,
+                    url: '/movies/' + listing.id,
+                    title: listing.name,
+                    type: listing.genres.map(genre => genre.slug),
+                    message: listing.description,
+                    img: baseURL + '/media/files/notifications/' + listing.img,
+                    thumbnail: baseURL + listing.thumbnail,
+                    slug: listing.key,
+                    rating: listing.rate,
+                    length: listing.length,
+                    likes: listing.likes,
+                    comments: listing.comments,
+                    liked: listing.liked,
+                    bookmark: listing.bookmark
                 }
             })
             return <Section
@@ -54,8 +55,8 @@ const Home = () => {
                 onLiked={(event: { currentTarget: any; }) => onLiked(event.currentTarget.value, data) === 0 ? '' : handleShow()}
                 onComment={(comment, id) => onComment(comment, id, data) === 0 ? '' : handleShow()}
                 onBookmark={(event: { currentTarget: any; }) => onBookmark(event.currentTarget.value, data) === 0 ? '' : handleShow()}
-                payload={movies}
-                categories={getCategories(movies)}/>
+                payload={listings}
+                categories={getCategories(listings)}/>
         } else if (error) {
             return <div>Error when loading data, refresh the page</div>
         } else if (status) {
@@ -66,7 +67,7 @@ const Home = () => {
 
     return <div>
         <Layout>
-            {getMovies()}
+            {getListings()}
             <Alert show={show} handleClose={handleClose} message='Login is required'/>
         </Layout>
     </div>

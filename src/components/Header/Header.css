@@ -1,0 +1,8 @@
+@media screen and (min-width: 992px) {
+    .header-content-wrapper {
+        grid-gap: 24px;
+        grid-template-columns: 326px 1fr 326px;
+        max-width: 1360px;
+        margin: 0 auto;
+    }
+}

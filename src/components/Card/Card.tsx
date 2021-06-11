@@ -32,11 +32,11 @@ export default function Card({id, payload, onBookmark, onComment, onLiked, onCom
         <div className="h-full flex flex-col align-content-between items-center text-center">
             <Link to={payload.url}><img alt="team"
                                className="flex-shrink-0 rounded-lg w-full object-cover object-center mb-2"
-                               src={payload.img}></img></Link>
+                               src={payload.thumbnail}></img></Link>
             <div className="w-full">
                 {addCardInteraction()}
-                <h2 className="title-font font-medium text-lg text-gray-900">Alper Kamu</h2>
-                <h3 className="text-gray-500 mb-3 card-height-title"><Link to={payload.url}>{payload.title}</Link></h3>
+                <p className="title-font font-medium text-lg text-gray-900"><small>{payload.type[0]}</small></p>
+                <h3 className="text-gray-500 my-4"><Link to={payload.url}>{payload.title}</Link></h3>
                 <p className="mb-1 comments"><small>{payload.message}</small></p>
                 <span className="ml-2 inline-flex">
 

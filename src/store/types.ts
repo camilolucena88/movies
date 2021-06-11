@@ -19,10 +19,24 @@ export interface Element {
     rate: string;
     length: string;
     img: string;
+    thumbnail: string;
     likes: number;
     comments: CommentType[];
     liked?: boolean;
     bookmark?: boolean;
+}
+
+export interface Payload {
+    id: number;
+    url: string;
+    title: string;
+    type: string[];
+    message: string;
+    img: string;
+    thumbnail: string;
+    slug?: string;
+    rating?: string;
+    length?: string;
 }
 
 export interface Store {
