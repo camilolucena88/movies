@@ -1,5 +1,6 @@
 import React from 'react'
 import {Dropdown} from "react-bootstrap";
+import "./FilterNavBar.css"
 
 type Props = {
     onClick: (event: React.MouseEvent) => any;
@@ -36,10 +37,10 @@ const FilterNavBar = ({onClick, filters, removeFilter, categories}: Props) => {
             </div>
             <div className="flex-1 flex flex-row-reverse">
                 <Dropdown>
-                    <Dropdown.Toggle className="text-purple-500 text-decoration-none hover:bg-purple-500
+                    <Dropdown.Toggle className="text-purple-500 text-decoration-none hover:bg-pink-500
                                hover:text-white transition duration-500 ease-in-out" variant="link"
                                      id="dropdown-basic">
-                        Tipo
+                        Categories
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         {renderCategories}

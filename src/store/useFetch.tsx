@@ -3,7 +3,6 @@ import axios, {AxiosRequestConfig} from 'axios'
 import {useDispatch} from "react-redux";
 import {addElement} from "./actions/elements";
 import {Element} from "./types";
-import store from "./store";
 import {addToWishlist} from "./actions/wishlist";
 import {addToLikedElements} from "./actions/likes";
 import userIsLogged from "../services/auth/userStatus";

@@ -6,6 +6,12 @@ import { useDispatch } from "react-redux";
 import {updateElement} from "../../store/actions/elements";
 import CommentDetails from "./CommentDetails";
 import {addToWishlist} from "../../store/actions/wishlist";
+import {BeachDetails} from "../DetailSection/BeachDetails/BeachDetails";
+import {GoogleMaps} from "../GoogleMaps/GoogleMaps";
+import {HistoricalPlaces} from "../HistoricalPlaces/HistoricalPlaces";
+import {Restaurant} from "../Restaurant/Restaurant";
+import {NightClubs} from "../NightClubs/NightClubs";
+import {Bars} from "../Bars/Bars";
 
 type Props = {
     payload: Payload,
@@ -16,15 +22,32 @@ const baseURL = process.env.REACT_APP_API_URL;
 const Details = ({payload, onComment, onCommentLike}: Props) => {
     
     const dispatch = useDispatch()
-    
+
     const onBookmark = () => {
         dispatch(addToWishlist(payload))
         dispatch(updateElement(payload.id, 'bookmark'))
     }
-    
-    return <section className="text-gray-600 body-font overflow-hidden">
+
+    const slugChooser = (slug : string) => {
+        switch (slug) {
+            case 'beach':
+                return <BeachDetails/>
+            case 'historical-places':
+                return <HistoricalPlaces/>
+            case 'restaurant':
+                return <Restaurant/>
+            case 'night-clubs':
+                return <NightClubs/>
+            case 'bars':
+                return <Bars/>
+            default:
+                return ''
+        }
+    }
+
+    return <section className="text-gray-600 body-font overflow-hidden m-3">
         <ReverseBtn/>
-        <div className="container px-5 py-24 mx-auto">
+        <div className="container px-5 py-5 mx-auto">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
                 <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
                      src={baseURL + "/media/files/notifications/"+payload.img}></img>
@@ -80,6 +103,8 @@ const Details = ({payload, onComment, onCommentLike}: Props) => {
                 </div>
             </div>
         </div>
+        {payload.genres.map(genre => slugChooser(genre.slug))}
+        <div className="container flex justify-center"><GoogleMaps latitude={35.9191716} longitude={14.4897774}/></div>
         <CommentDetails elementId={payload.id} onCommentLike={onCommentLike} id={payload.id} comments={payload.comments} onComment={onComment}/>
     </section>
 }

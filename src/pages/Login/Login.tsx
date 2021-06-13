@@ -1,6 +1,6 @@
 import React, {FormEvent, useState} from "react";
 import Layout from "../../components/Layout/Layout";
-import {Button, Form, Nav} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import login from "../../services/auth/login";
 import {useSelector} from "react-redux";
 import {Store} from "../../store/types";

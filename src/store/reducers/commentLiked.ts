@@ -1,4 +1,4 @@
-import {CommentType, Element, LikesStore} from "../types";
+import {Element, LikesStore} from "../types";
 import {ADD_ELEMENT_TO_COMMENT_LIKED, CommentLikedTypes} from "../actions/commentLikes";
 
 const removeFromLikedElements = (elements: Element[], id: number): Element[] =>

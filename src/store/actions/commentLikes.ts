@@ -1,4 +1,4 @@
-import {CommentType, Element} from "../types";
+import {Element} from "../types";
 
 export const ADD_ELEMENT_TO_COMMENT_LIKED = "ADD_ELEMENT_TO_LIKED"
 export const REMOVE_ELEMENT_FROM_COMMENT_LIKED = "REMOVE_ELEMENT_FROM_LIKED"

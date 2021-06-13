@@ -101,5 +101,10 @@ export interface Payload {
     bookmark?: boolean;
 }
 
+export interface GoogleMapCoordinates {
+    latitude: number;
+    longitude: number;
+}
+
 export type AppDispatch = typeof store.dispatch
 

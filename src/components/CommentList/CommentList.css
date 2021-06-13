@@ -1,4 +1,4 @@
-.form-control-comments{
+.form-control-comments {
     display: block;
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
@@ -9,16 +9,23 @@
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #e8eff1;
+    border: 1px solid #fff;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.form-control-comments:focus{
+.form-control-comments:focus {
     outline: none !important;
 
 }
 
 .comment-likes {
     font-size: 9px;
+}
+
+
+.input-background {
+    background-image: linear-gradient(
+            90.69deg, #fbbf24 13.42%, #ff4ecd 42.37%, #ec4899 103.09%);
+    padding: 1px;
 }

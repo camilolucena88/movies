@@ -3,7 +3,6 @@ import {CommentType} from "../../store/types";
 import "./CommentList.css"
 import {Link} from "react-router-dom";
 import CommentLayout from "./CommentLayout";
-import Header from "../Header/Header";
 
 type Props = {
     id: number,
@@ -66,11 +65,13 @@ export default function CommentList({id, comments, onComment, onCommentLike, ele
     
     return <div className="text-left">
         {showComments()}
-        <form onSubmit={(event) => submitBtn(event)} className="pt-2 flex justify-content-between">
-            <input className="form-control-comments " type="text" placeholder="Add a comment" value={comment}
-                   onChange={(event) => addComment(event.currentTarget.value)}/>
-            <button className="btn btn-sm" type="submit"><small className="text-blue-300">Post</small></button>
-        </form>
+        <div>
+            <form onSubmit={(event) => submitBtn(event)} className="pt-2 flex justify-content-between bg-white rounded-md">
+                    <input className="form-control-comments " type="text" placeholder="Add a comment" value={comment}
+                           onChange={(event) => addComment(event.currentTarget.value)}/>
+                    <button className="btn btn-sm" type="submit"><small className="text-blue-300">Post</small></button>
+            </form>
+        </div>
     </div>
 }
 
