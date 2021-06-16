@@ -4,8 +4,6 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.2",
-    "@fullcalendar/daygrid": "^5.7.2",
-    "@fullcalendar/react": "^5.7.2",
     "@react-google-maps/api": "^2.2.0",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.4",
