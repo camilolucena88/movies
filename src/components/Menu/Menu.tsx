@@ -1,24 +1,7 @@
 import React from "react";
 import {MenuCard} from "./MenuCard";
 
-type Food = {
-    breakfast?: string[],
-    lunch?: string[],
-    dinner?: string[],
-    dessert?: string[],
-}
-
-type Drinks = {
-    drinks?: string[],
-    wines?: string[],
-}
-
-type Props = {
-    food?: Food
-    drinks?: Drinks
-}
-
-export const Menu = ({food, drinks}: Props) => {
+export const Menu = () => {
     return <div>
         <h1>Breakfast</h1>
         <MenuCard/>
