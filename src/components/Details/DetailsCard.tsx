@@ -145,8 +145,6 @@ export const DetailsCard = ({title, icon}: Props) => {
                         <img
                             src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                             className="w-6 h-6 rounded-full"/>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Woman_7.jpg"
-                             className="w-6 h-6 rounded-full"/>
                         <img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxSqK0tVELGWDYAiUY1oRrfnGJCKSKv95OGUtm9eKG9HQLn769YDujQi1QFat32xl-BiY&usqp=CAU"
                             className="w-6 h-6 rounded-full"/>

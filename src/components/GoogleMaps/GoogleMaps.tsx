@@ -15,8 +15,6 @@ export const GoogleMaps = ({latitude, longitude}: GoogleMapCoordinates) => {
 
     const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY ? process.env.REACT_APP_GOOGLE_MAPS_API_KEY : ''
 
-    console.log(key)
-
     return (
         <LoadScript
             googleMapsApiKey={key}

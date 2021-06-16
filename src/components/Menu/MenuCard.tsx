@@ -7,7 +7,7 @@ export const MenuCard = () => {
                 <div className="sm:w-6/12 lg:w-4/12 px-4 mb-6">
                     <div className="md:flex md:items-stretch md:shadow-lg md:bg-white md:rounded-lg">
                         <div className="md:w-6/12 lg:w-5/12">
-                            <img className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
+                            <img alt="test" className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
                                  src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=100"></img>
                         </div>
                         <div
@@ -30,7 +30,7 @@ export const MenuCard = () => {
                 <div className="sm:w-6/12 lg:w-4/12 px-4 mb-6">
                     <div className="md:flex md:items-stretch md:shadow-lg md:bg-white md:rounded-lg">
                         <div className="md:w-6/12 lg:w-5/12">
-                            <img className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
+                            <img alt="test" className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
                                  src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=100"></img>
                         </div>
                         <div
@@ -53,7 +53,7 @@ export const MenuCard = () => {
                 <div className="sm:w-6/12 lg:w-4/12 px-4 mb-6">
                     <div className="md:flex md:items-stretch md:shadow-lg md:bg-white md:rounded-lg">
                         <div className="md:w-6/12 lg:w-5/12">
-                            <img className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
+                            <img alt="test" className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
                                  src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=100"></img>
                         </div>
                         <div
@@ -76,7 +76,7 @@ export const MenuCard = () => {
                 <div className="sm:w-6/12 lg:w-4/12 px-4 mb-6">
                     <div className="md:flex md:items-stretch md:shadow-lg md:bg-white md:rounded-lg">
                         <div className="md:w-6/12 lg:w-5/12">
-                            <img className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
+                            <img alt="test" className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
                                  src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=100"></img>
                         </div>
                         <div
@@ -99,7 +99,7 @@ export const MenuCard = () => {
                 <div className="sm:w-6/12 lg:w-4/12 px-4 mb-6">
                     <div className="md:flex md:items-stretch md:shadow-lg md:bg-white md:rounded-lg">
                         <div className="md:w-6/12 lg:w-5/12">
-                            <img className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
+                            <img alt="test" className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
                                  src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=100"></img>
                         </div>
                         <div
@@ -122,7 +122,7 @@ export const MenuCard = () => {
                 <div className="sm:w-6/12 lg:w-4/12 px-4 mb-6">
                     <div className="md:flex md:items-stretch md:shadow-lg md:bg-white md:rounded-lg">
                         <div className="md:w-6/12 lg:w-5/12">
-                            <img className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
+                            <img alt="test" className="rounded-lg md:rounded-r-none w-full h-full object-cover object-left"
                                  src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=100"></img>
                         </div>
                         <div

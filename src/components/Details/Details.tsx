@@ -2,12 +2,8 @@ import React, {useState} from 'react';
 import ReverseBtn from "../Buttons/ReverseBtn";
 import RatingStar from "../Rating/RatingStar";
 import {Element as Payload} from "./../../store/types"
-import { useDispatch } from "react-redux";
-import {updateElement} from "../../store/actions/elements";
 import CommentDetails from "./CommentDetails";
-import {addToWishlist} from "../../store/actions/wishlist";
 import {BeachDetails} from "../DetailSection/BeachDetails/BeachDetails";
-import {GoogleMaps} from "../GoogleMaps/GoogleMaps";
 import {HistoricalPlaces} from "../HistoricalPlaces/HistoricalPlaces";
 import {Restaurant} from "../Restaurant/Restaurant";
 import {NightClubs} from "../NightClubs/NightClubs";

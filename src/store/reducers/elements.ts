@@ -29,6 +29,8 @@ const addCommentToElement = (elements: Element[], elementId: number, comment: st
                 liked: false,
                 replies: []
             })
+        } else {
+            return ''
         }
     })
     return elements;

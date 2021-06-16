@@ -7,7 +7,7 @@ export const Events = () => {
                 <div className="bg-white shadow-md  rounded-3xl p-3">
                     <div className="flex-none lg:flex">
                         <div className=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
-                            <img className=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
+                            <img alt="test" className=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
                                  src="https://images.unsplash.com/photo-1485872299829-c673f5194813?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"></img>
                         </div>
                         <div className="flex-auto ml-3 justify-evenly py-2">
@@ -68,7 +68,7 @@ export const Events = () => {
                 <div className="bg-white shadow-md  rounded-3xl p-3">
                     <div className="flex-none lg:flex">
                         <div className=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
-                            <img className=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
+                            <img alt="test" className=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
                                  src="https://images.unsplash.com/photo-1485872299829-c673f5194813?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"></img>
                         </div>
                         <div className="flex-auto ml-3 justify-evenly py-2">

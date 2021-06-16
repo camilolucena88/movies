@@ -3,6 +3,7 @@ import {CommentType} from "../../store/types";
 import "./CommentList.css"
 import {Link} from "react-router-dom";
 import CommentLayout from "./CommentLayout";
+import {ErrorComponent} from "../ErrorComponent/ErrorComponent";
 
 type Props = {
     id: number,
@@ -54,6 +55,8 @@ export default function CommentList({id, comments, onComment, onCommentLike, ele
                         return <CommentLayout comment={comment} id={id} onCommentLike={onCommentLike}/>
                     } else if (index > comments.length - 4) {
                         return <CommentLayout comment={comment} id={id} onCommentLike={onCommentLike}/>
+                    } else {
+                        return <ErrorComponent/>
                     }
                 })
                 return <div> {commentsView} {viewMoreBtn()} </div>
