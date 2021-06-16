@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReverseBtn from "../Buttons/ReverseBtn";
 import RatingStar from "../Rating/RatingStar";
 import {Element as Payload} from "./../../store/types"
@@ -12,6 +12,8 @@ import {HistoricalPlaces} from "../HistoricalPlaces/HistoricalPlaces";
 import {Restaurant} from "../Restaurant/Restaurant";
 import {NightClubs} from "../NightClubs/NightClubs";
 import {Bars} from "../Bars/Bars";
+import {onBookmark} from "../../services/userInteraction/wishlist";
+import Alert from "../Alert/Alert";
 
 type Props = {
     payload: Payload,
@@ -22,12 +24,11 @@ const baseURL = process.env.REACT_APP_API_URL;
 const Details = ({payload, onComment, onCommentLike}: Props) => {
     
     const dispatch = useDispatch()
+    const [show, setShow] = useState(false);
 
-    const onBookmark = () => {
-        dispatch(addToWishlist(payload))
-        dispatch(updateElement(payload.id, 'bookmark'))
-    }
+    const handleClose = () => setShow(false);
 
+    const handleShow = () => setShow(true);
     const slugChooser = (slug : string) => {
         switch (slug) {
             case 'beach':
@@ -90,7 +91,8 @@ const Details = ({payload, onComment, onCommentLike}: Props) => {
                     </div>
                     <div className="flex">
                         <span className="title-font font-medium text-2xl text-gray-900">{payload.length}</span>
-                        <button data-key={payload.key} onClick={(event) => onBookmark()}
+                        <button data-key={payload.key}
+                                onClick={(event: { currentTarget: any; }) => onBookmark(event.currentTarget.value, [payload]) === 0 ? '' : handleShow()}
                             className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                             <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                  className="w-5 h-5" viewBox="0 0 24 24">
@@ -104,8 +106,8 @@ const Details = ({payload, onComment, onCommentLike}: Props) => {
             </div>
         </div>
         {payload.genres.map(genre => slugChooser(genre.slug))}
-        <div className="container flex justify-center"><GoogleMaps latitude={35.9191716} longitude={14.4897774}/></div>
         <CommentDetails elementId={payload.id} onCommentLike={onCommentLike} id={payload.id} comments={payload.comments} onComment={onComment}/>
+        <Alert show={show} handleClose={handleClose} message='Login is required'/>
     </section>
 }
 
