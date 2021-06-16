@@ -13,9 +13,11 @@ export const GoogleMaps = ({latitude, longitude}: GoogleMapCoordinates) => {
         lng: longitude
     };
 
+    const key = process.env.GOOGLE_MAPS_API_KEY ? process.env.GOOGLE_MAPS_API_KEY : ''
+
     return (
         <LoadScript
-            googleMapsApiKey="AIzaSyBaP6Fhc35A1StbEuaH7xija46CCciDU-U"
+            googleMapsApiKey={key}
         >
             <GoogleMap
                 mapContainerStyle={containerStyle}
