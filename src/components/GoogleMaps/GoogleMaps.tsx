@@ -13,7 +13,9 @@ export const GoogleMaps = ({latitude, longitude}: GoogleMapCoordinates) => {
         lng: longitude
     };
 
-    const key = process.env.GOOGLE_MAPS_API_KEY ? process.env.GOOGLE_MAPS_API_KEY : ''
+    const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY ? process.env.REACT_APP_GOOGLE_MAPS_API_KEY : ''
+
+    console.log(key)
 
     return (
         <LoadScript
