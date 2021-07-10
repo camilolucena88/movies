@@ -39,7 +39,7 @@ const Home = () => {
                     title: listing.name,
                     type: listing.genres.map(genre => genre.slug),
                     message: listing.description,
-                    img: baseURL + '/media/files/notifications/' + listing.img,
+                    img: baseURL + 'media/original_images/' + listing.img,
                     thumbnail: baseURL + listing.thumbnail,
                     slug: listing.key,
                     rating: listing.rate,

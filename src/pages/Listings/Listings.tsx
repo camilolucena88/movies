@@ -11,7 +11,7 @@ import {addLikedCommentsToElement} from "../../store/actions/comments";
 import {onComment} from "../../services/userInteraction/comments";
 import Alert from "../../components/Alert/Alert";
 
-const Movies = () => {
+const Listings = () => {
     const dispatch = useDispatch()
     const {id} = useParams<{ id: string }>();
     const storeMovies = useSelector((state: Store) => state.movies.elements)
@@ -34,10 +34,11 @@ const Movies = () => {
     
     const getMovie = () => {
         if (data) {
-            if (storeMovies.find(movie => movie.id === parseInt(id))) {
+            const payload = storeMovies.find(listing => listing.id === parseInt(id))
+            if (storeMovies.find(movie => movie.id === parseInt(id)) && payload) {
                 return <Details
                     onCommentLike={onCommentLike}
-                    payload={storeMovies[parseInt(id) - 1]}
+                    payload={payload}
                     onComment={(comment, id) => onComment(comment, id, data) === 0 ? '' : handleShow()}/>
             } else {
                 return <Redirect to="/not-found"/>
@@ -57,4 +58,4 @@ const Movies = () => {
     </div>
 }
 
-export default Movies;
+export default Listings;

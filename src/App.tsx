@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Router, Route, Switch} from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Movies from "./pages/Movies/Movies";
+import Listings from "./pages/Listings/Listings";
 import ErrorBoundary from "./components/ErrorBoundary";
 import store from "./store/store"
 import {Provider} from "react-redux";
@@ -33,7 +33,7 @@ function App() {
                               path="/wishlist"
                               component={Wishlist}
                           />
-                          <Route exact path="/movies/:id" children={<Movies/>}/>
+                          <Route exact path="/movies/:id" children={<Listings/>}/>
                           <Route exact path="/register" children={<Register/>}/>
                           <Route exact path="/login" children={<Login/>}/>
                           <Route path="*">
