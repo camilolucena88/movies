@@ -37,7 +37,7 @@ const Details = ({payload, onComment, onCommentLike}: Props) => {
                 return ''
         }
     }
-    const img =  payload.img ? "/media/original_images/" + payload.img : payload.thumbnail
+    const img =  payload.img ? payload.img : payload.thumbnail
 
     return <section className="text-gray-600 body-font overflow-hidden m-3">
         <ReverseBtn/>

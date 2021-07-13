@@ -27,12 +27,14 @@ export default function Card({id, payload, onBookmark, onComment, onLiked, onCom
             onBookmark={onBookmark}
         />
     }
-    
+
+    const thumbnail = payload.thumbnail !== null ? payload.thumbnail : payload.img
+
     return (<div className="p-4 lg:w-1/4 md:w-1/2">
         <div className="h-full flex flex-col align-content-between items-center text-center">
             <Link to={payload.url}><img alt="team"
                                className="flex-shrink-0 rounded-lg w-full object-cover object-center mb-2"
-                               src={payload.thumbnail}></img></Link>
+                               src={thumbnail}></img></Link>
             <div className="w-full">
                 {addCardInteraction()}
                 <p className="title-font font-medium text-lg text-gray-900"><small>{payload.type[0]}</small></p>
